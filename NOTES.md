@@ -48,8 +48,8 @@ MODELS
   - User
     - username
     - email
-    - password
-    - password confirmation
+    - first_name
+    - last_name
     - subscription_id
 
   - Subscription
