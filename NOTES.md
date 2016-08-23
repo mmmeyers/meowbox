@@ -85,3 +85,6 @@ To meet the nested resource requirements /boxes/1/items should show all of the i
 1. What is the root route? - 'welcome#home'
   - need to make a welcome controller (acts like a static controller)
   - need to make a view that links to sign up or log in
+
+2. When a user signs up, they are taken from the home page to a sign up page.
+  - need to make a 
