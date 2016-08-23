@@ -78,3 +78,10 @@ To meet the nested form and custom attribute writer you should be able to add up
 To meet the nested resource requirements /boxes/1/items should show all of the items in box #1 to anyone who wants to see it and boxes/1/items/new should allow an administrator to add a new item to a box.
 
 /items/new should also allow an admin to add a new item to a box, but they'll have to select from a drop down list of boxes
+
+
+---
+
+1. What is the root route? - 'welcome#home'
+  - need to make a welcome controller (acts like a static controller)
+  - need to make a view that links to sign up or log in
