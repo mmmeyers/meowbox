@@ -87,4 +87,9 @@ To meet the nested resource requirements /boxes/1/items should show all of the i
   - need to make a view that links to sign up or log in
 
 2. When a user signs up, they are taken from the home page to a sign up page.
-  - need to make a 
+  - after they sign up, where do they go? - probably want them to see all subscriptions available, so to a subscriptions index page
+
+3. When a user logs in, they are taken from the home page to a login page.
+  - after they log in, where do they go? - probably want them to see a personalized page that shows them their current subscription.
+
+3. Add roles to user class.

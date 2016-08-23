@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  enum role: [:visitor, :subscriber, :admin]
+  enum role: {visitor: 0, subscriber: 1, admin: 2}
   belongs_to :subscription
   has_many :boxes
   validates :username, :email, presence: true
