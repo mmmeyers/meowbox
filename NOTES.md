@@ -83,16 +83,20 @@ To meet the nested resource requirements /boxes/1/items should show all of the i
 ---
 
 1. What is the root route? - 'welcome#home'
-  - need to make a welcome controller (acts like a static controller)
-  - need to make a view that links to sign up or log in
+  - need to make a welcome controller (acts like a static controller) - DONE
+  - need to make a view that links to sign up or log in - DONE (simple for now)
 
 2. When a user signs up, they are taken from the root page to a sign up page.
-  - after they sign up, where do they go? - probably want them to see all subscriptions available, so to a subscriptions index page
+  - after they sign up, where do they go? - probably want them to see all subscriptions available, so to a subscriptions index page - right now they go to the home page that links to subscriptions index - DONE
 
 3. When a user logs in, they are taken from the root page to a login page.
-  - after they log in, where do they go? - probably want them to see a personalized page that shows them their current subscription. Currently they go to the home page. Maybe do an <%= if logged_in? %>
+  - after they log in, where do they go? - they go to the home page that links them to profile page - DONE
+
+  so the sign up and login both redirect to the welcome controller home page. Make links to see available subscriptions (for new users), and a link to see profile page - DONE
 
 3. Add roles to user class.
+
+4. Let's work on the subscriptions index page. We want to list here the 3 types of subscriptions available, along with links to each of their show pages. The visitor should be able to see this page, along with the show pages as well. Subscriptions are hard-coded.
 
 To work on tomorrow:
 1. Be able to sign up and see all subscriptions available.
