@@ -1,6 +1,5 @@
 <h1>Our available subscriptions:</h1>
 
-
-<h3><%= link_to "Kitten: $10/month", subscription_path(@subscription) %></h3>
-<h3>Cat: $30/month</h3>
-<h3>Lion: $100/month</h3>
+<% @subscriptions.each do |subscription| %>
+  <li><%= link_to subscription.level, subscription_path(subscription) %></li>
+<% end %>
