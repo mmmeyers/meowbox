@@ -86,10 +86,14 @@ To meet the nested resource requirements /boxes/1/items should show all of the i
   - need to make a welcome controller (acts like a static controller)
   - need to make a view that links to sign up or log in
 
-2. When a user signs up, they are taken from the home page to a sign up page.
+2. When a user signs up, they are taken from the root page to a sign up page.
   - after they sign up, where do they go? - probably want them to see all subscriptions available, so to a subscriptions index page
 
-3. When a user logs in, they are taken from the home page to a login page.
-  - after they log in, where do they go? - probably want them to see a personalized page that shows them their current subscription.
+3. When a user logs in, they are taken from the root page to a login page.
+  - after they log in, where do they go? - probably want them to see a personalized page that shows them their current subscription. Currently they go to the home page. Maybe do an <%= if logged_in? %>
 
 3. Add roles to user class.
+
+To work on tomorrow:
+1. Be able to sign up and see all subscriptions available.
+2. Be able to log in and see profile page (user show page)

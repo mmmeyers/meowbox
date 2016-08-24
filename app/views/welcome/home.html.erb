@@ -1,1 +1,9 @@
 <h1>Welcome to MeowBox!</h1>
+
+(THIS IS THE WELCOME#HOME PAGE)
+<h3>Welcome, <%= current_user.first_name %></h3>
+<p>What would you like to do?</p>
+<ul>
+  <li><%= link_to "See subscriptions", subscriptions_path %></li>
+
+</ul>
