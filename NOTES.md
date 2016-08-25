@@ -7,7 +7,7 @@ VISITOR
 - Purchase a subscription (don’t worry about processing payments - just ask for first name, last name and email): NEW subscriptions form
 
 SUBSCRIBER
-- Cancel my subscription at any time so I don’t have to pay for ever: subscriptions DESTROY form (use dependent: :destroy for user)
+- Cancel my subscription at any time so I don’t have to pay forever: subscriptions DESTROY form (use dependent: :destroy for user)
 - See what boxes I have received and what each one contained so I can remember what stuff I got and where I could get more of it (this will require login including support for “forgotten password” as users who initially sign up won’t have a password, so they’ll need to have a link emailed to them to update it.: boxes INDEX page with links to each SHOW page
 
 ADMINISTRATOR
@@ -96,7 +96,9 @@ To meet the nested resource requirements /boxes/1/items should show all of the i
 
 3. Add roles to user class.
 
-4. Let's work on the subscriptions index page. We want to list here the 3 types of subscriptions available, along with links to each of their show pages. The visitor should be able to see this page, along with the show pages as well. Subscriptions are hard-coded.
+4. Let's work on the subscriptions index page. We want to list here the 3 types of subscriptions available, along with links to each of their show pages. The visitor should be able to see this page, along with the show pages as well. Subscriptions are hard-coded. - DONE - Anyone can access the subscriptions page at this point and link to each level's show page.
+
+We want to have the show page link to a sign up form. New subscriptions.
 
 To work on tomorrow:
 1. Be able to sign up and see all subscriptions available.

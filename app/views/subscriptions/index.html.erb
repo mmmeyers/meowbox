@@ -1,5 +1,10 @@
-<h1>Our available subscriptions:</h1>
-
-<% @subscriptions.each do |subscription| %>
-  <li><%= link_to subscription.level, subscription_path(subscription) %></li>
-<% end %>
+<div class="container-">
+  <h1 id="thoughts" class="display-4 text-xs-center m-y-3 text-muted">Subscriptions</h1>
+        <ul class="list-group">
+          <% @subscriptions.each do |subscription| %>
+          <li class="list-group-item">
+            <h4 class="list-group-item-heading"><%= link_to subscription.level, subscription_path(subscription) %> </h4>
+          </li>
+          <% end %>
+        </ul>
+</div><!-- end container -->
