@@ -94,3 +94,5 @@ To meet the nested resource requirements /boxes/1/items should show all of the i
 5. When a user signs up, they become a subscriber instead of just a visitor so we need to change their role. (DONE)
 
 6. Subscriber can cancel their account (DONE)
+
+7. Subscriber should be able to see which boxes they have already gotten.
