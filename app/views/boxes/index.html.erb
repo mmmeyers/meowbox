@@ -1,0 +1,6 @@
+<h2>All Boxes</h2>
+
+<% @boxes.each do |box| %>
+  <%= box.title %><br>
+  Shipped on <%= box.date_of_box %>
+<% end %>

@@ -1,0 +1,14 @@
+<h2>Create a new box</h2>
+
+<% if current_user.admin? %>
+  <%= form_for(@box) do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %><br>
+
+    <%= f.label :date_of_box %>
+    <%= f.date_field :date_of_box %><br>
+
+    <%= f.submit "Done" %>
+
+  <% end %>
+<% end %>
