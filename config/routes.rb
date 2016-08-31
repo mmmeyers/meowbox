@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root 'subscriptions#index'
 
-  resources :users
   resources :subscriptions
+  resources :users
+
 end

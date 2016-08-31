@@ -1,1 +1,5 @@
-USER SHOW PAGE
+<%= @user.first_name %> <%= @user.last_name %><br>
+Email: <%= @user.email %><br>
+Username: <%= @user.username %><br>
+Subscription: <%= @user.subscription.level %><br>
+Description: <%= @user.subscription.description %><br>

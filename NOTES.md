@@ -4,7 +4,7 @@ Business objective:
 VISITOR
 - See a list of monthly subscriptions (three subscription levels hard coded - $10/mo, $30/mo and $100/mo): subscriptions INDEX page
 - Learn more about a particular description so I can decide whether or not it’s worth buying (detail page for subscription): subscriptions SHOW pages
-- Purchase a subscription (don’t worry about processing payments - just ask for first name, last name and email): NEW subscriptions form
+- Purchase a subscription (don’t worry about processing payments - just ask for first name, last name and email): NEW subscriptions form: DOES THIS MEAN SIGN UP WITHOUT LOGGING IN?
 
 SUBSCRIBER
 - Cancel my subscription at any time so I don’t have to pay forever: subscriptions DESTROY form (use dependent: :destroy for user)
@@ -82,19 +82,12 @@ To meet the nested resource requirements /boxes/1/items should show all of the i
 
 ---
 
-1. What is the root route? - 'welcome#home'
-  - need to make a welcome controller (acts like a static controller) - DONE
-  - need to make a view that links to sign up or log in - DONE (simple for now)
+1. What is the root route? - 'subscriptions#index'
+  - A visitor can see the list of available subscriptions as well as click on the links to see each individual one, but if they try to subscribe, then it redirects them to sign up or log in.
 
-2. When a user signs up, they are taken from the root page to a sign up page.
-  - after they sign up, where do they go? - probably want them to see all subscriptions available, so to a subscriptions index page - right now they go to the home page that links to subscriptions index - DONE
+2. When a user signs up or logs in, they are taken to the subscriptions index page where they can see each individual item and then subscribe.
 
-3. When a user logs in, they are taken from the root page to a login page.
-  - after they log in, where do they go? - they go to the home page that links them to profile page - DONE
-
-  so the sign up and login both redirect to the welcome controller home page. Make links to see available subscriptions (for new users), and a link to see profile page - DONE
-
-3. Add roles to user class.
+3. Add roles to user class. (DONE)
 
 4. Let's work on the subscriptions index page. We want to list here the 3 types of subscriptions available, along with links to each of their show pages. The visitor should be able to see this page, along with the show pages as well. Subscriptions are hard-coded. - DONE - Anyone can access the subscriptions page at this point and link to each level's show page.
 
