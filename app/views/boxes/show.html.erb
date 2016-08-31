@@ -1,15 +1,7 @@
 <% if current_user.admin? %>
-
-  <h2>All Boxes</h2>
-
-  <% @boxes.each do |box| %>
-    <%= box.title %><br>
-    Shipped on <%= box.date_of_box %>
-  <% end %>
-
+  <h3><%= @box.title %></h3>
+  <p><%= @box.date_of_box %></p>
 <% else %>
-
   <p>You are not authorized to view this page.</p>
   <p><%= link_to "Go back", subscriptions_path %></p>
-
-<% end %>  
+<% end %>

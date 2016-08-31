@@ -20,7 +20,7 @@
           <li class="nav-item"><%= link_to "Edit profile", edit_user_registration_path %></li>
           <li class="nav-item"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
         <% else %>
-          <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %><br>
+          Already a subscriber? <%= link_to "Sign in", new_user_session_path %><br>
         <% end %>
       </li>
     </ul>

@@ -17,6 +17,10 @@ class BoxesController < ApplicationController
     end
   end
 
+  def show
+    @box = Box.find(params[:id])
+  end
+
   private
 
     def box_params
