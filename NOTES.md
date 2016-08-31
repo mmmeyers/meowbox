@@ -1,10 +1,10 @@
 Business objective:
 - Create “Meowbox” - a website where people can sign up for a monthly subscription for toys and treats for their favorite feline!
 
-VISITOR
-- See a list of monthly subscriptions (three subscription levels hard coded - $10/mo, $30/mo and $100/mo): subscriptions INDEX page
-- Learn more about a particular description so I can decide whether or not it’s worth buying (detail page for subscription): subscriptions SHOW pages
-- Purchase a subscription (don’t worry about processing payments - just ask for first name, last name and email): NEW subscriptions form: DOES THIS MEAN SIGN UP WITHOUT LOGGING IN?
+VISITOR (DONE)
+- See a list of monthly subscriptions (three subscription levels hard coded - $10/mo, $30/mo and $100/mo)
+- Learn more about a particular description so I can decide whether or not it’s worth buying (detail page for subscription)
+- Purchase a subscription (don’t worry about processing payments - just ask for first name, last name and email)
 
 SUBSCRIBER
 - Cancel my subscription at any time so I don’t have to pay forever: subscriptions DESTROY form (use dependent: :destroy for user)
@@ -83,16 +83,13 @@ To meet the nested resource requirements /boxes/1/items should show all of the i
 ---
 
 1. What is the root route? - 'subscriptions#index'
-  - A visitor can see the list of available subscriptions as well as click on the links to see each individual one, but if they try to subscribe, then it redirects them to sign up or log in.
+  - A visitor can see the list of available subscriptions as well as click on the links to see each individual one, and they can subscribe using the link (which also creates a new user).
 
 2. When a user signs up or logs in, they are taken to the subscriptions index page where they can see each individual item and then subscribe.
 
 3. Add roles to user class. (DONE)
 
-4. Let's work on the subscriptions index page. We want to list here the 3 types of subscriptions available, along with links to each of their show pages. The visitor should be able to see this page, along with the show pages as well. Subscriptions are hard-coded. - DONE - Anyone can access the subscriptions page at this point and link to each level's show page.
+4. We want to list on the subscriptions index page the 3 types of subscriptions available, along with links to each of their show pages. The visitor should be able to see this page, along with the show pages as well. Subscriptions are hard-coded. - DONE - Anyone can access the subscriptions page at this point and link to each level's show page. (DONE)
 
-We want to have the show page link to a sign up form. New subscriptions.
-
-To work on tomorrow:
-1. Be able to sign up and see all subscriptions available.
-2. Be able to log in and see profile page (user show page)
+TO DO:
+1. When a user signs up, they become a subscriber instead of just a visitor so we need to change their role.

@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.role = "subscriber"
     if @user.save
       redirect_to user_path(@user)
     else
@@ -28,6 +29,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:email, :first_name, :last_name, :username, :subscription_id)
+      params.require(:user).permit(:email, :first_name, :last_name, :username, :subscription_id, :role)
     end
 end

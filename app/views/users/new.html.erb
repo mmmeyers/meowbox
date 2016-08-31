@@ -15,12 +15,15 @@
 
   <%= f.label :password %>
   <%= f.password_field :password %><br>
-  
+
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %><br>
 
   <%= f.label :subscription_level %>
   <%= f.collection_select(:subscription_id, Subscription.all, :id, :level) %><br>
+
+  <%= f.label :role %>
+  <%= f.select :role, ["subscriber"] %><br>
 
   <%= f.submit %>
 <% end %>

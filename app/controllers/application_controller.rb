@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   protected
     def configure_permitted_parameters # this whitelists the username, as I added it to the signup
       devise_parameter_sanitizer.for(:sign_up) << :username
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :subscription_id])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :subscription_id, :role])
       devise_parameter_sanitizer.for(:account_update) << :username
     end
 end
