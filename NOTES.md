@@ -95,4 +95,6 @@ To meet the nested resource requirements /boxes/1/items should show all of the i
 
 6. Subscriber can cancel their account (DONE)
 
-7. Subscriber should be able to see which boxes they have already gotten.
+7. Subscriber should be able to see which boxes they have already gotten. How do we assign a user to a box?
+
+8. Add a new item to a box (admin only) box << item (DONE)

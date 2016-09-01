@@ -1,7 +1,8 @@
 <% if current_user.admin? %>
   <h3><%= @box.title %></h3>
   <p><%= @box.date_of_box %></p>
-  <ul>
+  <p>Subscription Level: <%= @box.subscription.level %></p>
+  <ul><strong>ITEMS:</strong>
     <% @box.items.each do |item| %>
       <li><%= item.title %> : <%= item.description %></li>
     <% end %>
