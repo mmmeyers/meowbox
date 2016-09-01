@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :users
 
   scope "/admin" do
-    resources :boxes
+    resources :boxes do
+      resources :items
+    end
   end
 
 end

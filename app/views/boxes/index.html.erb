@@ -3,8 +3,7 @@
   <h2>All Boxes</h2>
 
   <% @boxes.each do |box| %>
-    <%= box.title %><br>
-    Shipped on <%= box.date_of_box %>
+    <%= link_to box.title, box_path(box) %>, shipped on <%= box.date_of_box %>
   <% end %>
 
 <% else %>
@@ -12,4 +11,4 @@
   <p>You are not authorized to view this page.</p>
   <p><%= link_to "Go back", subscriptions_path %></p>
 
-<% end %>  
+<% end %>

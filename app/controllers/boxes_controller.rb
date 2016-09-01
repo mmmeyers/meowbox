@@ -11,7 +11,7 @@ class BoxesController < ApplicationController
   def create
     @box = Box.new(box_params)
     if @box.save
-      redirect_to boxes_path
+      redirect_to box_path(@box)
     else
       render 'new'
     end
@@ -19,6 +19,7 @@ class BoxesController < ApplicationController
 
   def show
     @box = Box.find(params[:id])
+    @item = Item.new
   end
 
   private

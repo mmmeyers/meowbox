@@ -1,6 +1,16 @@
 <% if current_user.admin? %>
   <h3><%= @box.title %></h3>
   <p><%= @box.date_of_box %></p>
+  <ul>
+    <% @box.items.each do |item| %>
+      <li><%= item.title %> : <%= item.description %></li>
+    <% end %>
+  </ul>
+
+  <%= render 'items/form' %>
+
+  <p><%= link_to "Back to boxes", boxes_path %></p>
+
 <% else %>
   <p>You are not authorized to view this page.</p>
   <p><%= link_to "Go back", subscriptions_path %></p>
