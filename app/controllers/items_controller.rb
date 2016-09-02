@@ -15,10 +15,20 @@ class ItemsController < ApplicationController
     end
   end
 
+  def index
+    @box = Box.find(params[:box_id])
+    @items = @box.items
+  end
+
+  def show
+    @box = Box.find(params[:box_id])
+    @item = @box.items.find(params[:id])
+  end
+
   private
 
     def item_params
-      params.require(:item).permit(:title, :description, :size, :image, :url)
+      params.require(:item).permit(:title, :description, :size, :image, :url, :item_ids)
     end
 
 end

@@ -6,10 +6,9 @@ Rails.application.routes.draw do
   resources :subscriptions
   resources :users
 
-  scope "/admin" do
+
     resources :boxes do
       resources :items
     end
-  end
 
 end

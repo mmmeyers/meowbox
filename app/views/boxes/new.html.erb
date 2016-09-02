@@ -10,7 +10,7 @@
       <%= f.datetime_local_field :date_of_box %><br>
 
       <%= f.label "Subscription level" %>
-      <%= f.collection_select(:subscription_id, Subscription.all, :id, :level) %>
+      <%= f.collection_select(:subscription_id, Subscription.all, :id, :level) %><br>
 
       <%= f.submit "Done" %>
     <% end %>

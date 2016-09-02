@@ -1,0 +1,8 @@
+<h2>Box Items</h2>
+Here we want to show all items in a particular box.
+
+<ul>
+  <% @box.items.each do |item| %>
+    <li><%= item.title %></li>
+  <% end %>
+</ul>
