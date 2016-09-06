@@ -12,6 +12,10 @@
       <%= f.label "Subscription level" %>
       <%= f.collection_select(:subscription_id, Subscription.all, :id, :level) %><br>
 
+      <%= f.label :items %><br>
+        <p><%= f.collection_select :item_ids, Item.all, :id, :title %></p>
+    
+
       <%= f.submit "Done" %>
     <% end %>
 
