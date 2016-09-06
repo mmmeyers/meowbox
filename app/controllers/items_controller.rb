@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 
   def new
+    @box = Box.find(params[:box_id])
     @item = Item.new
   end
 
@@ -8,6 +9,7 @@ class ItemsController < ApplicationController
     @box = Box.find(params[:box_id])
     @item = @box.items.build(item_params)
     @item.box_id = @box.id
+    @box.items << @item
     if @item.save
       redirect_to box_path(@box)
     else

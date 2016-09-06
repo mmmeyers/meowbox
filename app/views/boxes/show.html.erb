@@ -1,4 +1,4 @@
-<% if current_user.admin? %>
+<% if current_user.try(:admin?) %>
   <h3><%= @box.title %></h3>
   <p><%= @box.date_of_box %></p>
   <p>Subscription Level: <%= @box.subscription.level %></p>

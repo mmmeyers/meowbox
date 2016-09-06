@@ -6,6 +6,7 @@
             <h4 class="list-group-item-heading"><%= link_to subscription.level, subscription_path(subscription) %> </h4>
           </li>
           <% end %>
+          
           <li class="list-group-item">
             <h4 class="list-group-item-heading">
               <% if user_signed_in? %>
@@ -13,13 +14,13 @@
               <% end %>
             </h4>
           </li>
-          <% if current_user.try(:admin?) %>
-            <li class="list-group-item">
-              <h4 class="list-group-item-heading">
-                <%= link_to "See all boxes", boxes_path %>
-              </h4>
-            </li>
-          <% end %>
+
+          <li class="list-group-item">
+            <h4 class="list-group-item-heading">
+              <%= link_to "See all boxes", boxes_path %>
+            </h4>
+          </li>
+
         </ul>
 
 </div><!-- end container -->
