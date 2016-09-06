@@ -11,3 +11,6 @@
   </ul>
 
   <p><%= link_to "Go back", subscriptions_path %></p>
+  <% if current_user.try(:admin?) %>
+    <p><%= link_to "Create new box", new_box_path %><p>
+  <% end %>
