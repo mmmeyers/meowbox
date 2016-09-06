@@ -14,7 +14,7 @@
 
       <%= f.label :items %><br>
         <p><%= f.collection_select :item_ids, Item.all, :id, :title %></p>
-    
+
 
       <%= f.submit "Done" %>
     <% end %>
