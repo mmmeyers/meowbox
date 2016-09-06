@@ -1,0 +1,23 @@
+<% if current_user.try(:admin?) %>
+
+  <h2>Create a new box</h2>
+
+    <%= form_for(@box) do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title %><br>
+
+      <%= f.label :date_of_box %>
+      <%= f.datetime_local_field :date_of_box %><br>
+
+      <%= f.label "Subscription level" %>
+      <%= f.collection_select(:subscription_id, Subscription.all, :id, :level) %><br>
+
+      <%= f.submit "Done" %>
+    <% end %>
+
+  <% else %>
+
+    <p>You are not authorized to view this page.</p>
+    <p><%= link_to "Go back", subscriptions_path %></p>
+
+<% end %>

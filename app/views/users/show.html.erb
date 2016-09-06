@@ -6,6 +6,14 @@ Description: <%= @user.subscription.description %><br>
 Role: <%= @user.role %><br>
 
 <p>
+  <h4>Your boxes</h4>
+    <% @user.boxes.each do |box| %>
+      <%= box.title %><br>
+      <%= box.date_of_box %><br>
+    <% end %>
+</p>
+
+<p>
   <%= link_to "Want to cancel?", edit_user_registration_path %><br>
   <%= link_to "Go back", root_path %>
 </p>

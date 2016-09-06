@@ -1,0 +1,21 @@
+<% if current_user.try(:admin?) %>
+  <h2>Add an item to this box</h2>
+
+  <h4><%= @box.title %></h4>
+
+  <%= form_for([@box, @item]) do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %><br>
+
+    <%= f.label :description %>
+    <%= f.text_area :description %><br>
+
+    <%= f.submit %>
+  <% end %>
+
+  <% else %>
+
+  <p>You are not authorized to view this page.</p>
+  <p><%= link_to "Go back", boxes_path %></p>
+
+  <% end %>

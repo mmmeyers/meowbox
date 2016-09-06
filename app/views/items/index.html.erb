@@ -1,0 +1,12 @@
+<h2>Box Items</h2>
+Here we want to show all items in a particular box.
+
+<ul>
+  <% @box.items.each do |item| %>
+    <li><%= item.title %></li>
+  <% end %>
+</ul>
+
+
+<p><%= link_to "Add a new item to this box", new_box_item_path(@box) %></p>
+<p><%= link_to "Go back", boxes_path %></p>

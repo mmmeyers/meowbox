@@ -1,0 +1,13 @@
+<h2>All Boxes</h2>
+
+  <ul>
+    <% @boxes.each do |box| %>
+      <% if current_user.try(:admin?) %>
+        <li><%= link_to box.title, box_path(box) %>, shipped on <%= box.date_of_box %></li>
+      <% else %>
+        <li><%= link_to box.title, box_items_path(box) %></li>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <p><%= link_to "Go back", subscriptions_path %></p>

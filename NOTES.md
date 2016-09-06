@@ -73,9 +73,13 @@ To get all the user's items, can we just run user.boxes.each do |box| and then f
 
 Remember that the ability to perform the admin tasks should be limited to administrative users, not just logged in users.
 
-To meet the nested form and custom attribute writer you should be able to add up to three items to the box as part of creating the box, and if their title matches exactly an existing item, it should not create a new item, it should just join the box to an existing item. The quantity of the item should be stored in a join table joining the boxes and the items so one box may have the 3 oz kitty bright hair gel and another might have the 6oz.
+*** DOING TODAY 9/1:
 
-To meet the nested resource requirements /boxes/1/items should show all of the items in box #1 to anyone who wants to see it and boxes/1/items/new should allow an administrator to add a new item to a box.
+To meet the nested form and custom attribute writer you should be able to add up to three items to the box as part of creating the box, and if their title matches exactly an existing item, it should not create a new item, it should just join the box to an existing item. The size of the item should be stored in a join table joining the boxes and the items so one box may have the 3 oz kitty bright hair gel and another might have the 6oz.
+
+To meet the nested resource requirements /boxes/1/items should show all of the items in box #1 to anyone who wants to see it (DONE)
+
+and boxes/1/items/new should allow an administrator to add a new item to a box.
 
 /items/new should also allow an admin to add a new item to a box, but they'll have to select from a drop down list of boxes
 
@@ -94,3 +98,7 @@ To meet the nested resource requirements /boxes/1/items should show all of the i
 5. When a user signs up, they become a subscriber instead of just a visitor so we need to change their role. (DONE)
 
 6. Subscriber can cancel their account (DONE)
+
+7. Subscriber should be able to see which boxes they have already gotten. How do we assign a user to a box?
+
+8. Add a new item to a box (admin only) box << item (DONE)
