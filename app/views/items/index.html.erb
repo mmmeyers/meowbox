@@ -1,9 +1,11 @@
 <h2>Box Items</h2>
-Here we want to show all items in a particular box.
+Here we want to show all items in a particular box. Route is boxes/1/items
 
 <ul>
   <% @box.items.each do |item| %>
-    <li><%= item.title %></li>
+    <li><strong><u><%= item.title %></strong></u></li>
+    <li>Description: <%= item.description %></li>
+    <li>Size: <%= item.size %></li>
   <% end %>
 </ul>
 

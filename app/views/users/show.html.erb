@@ -8,7 +8,7 @@ Role: <%= @user.role %><br>
 <p>
   <h4>Your boxes</h4>
     <% @user.boxes.each do |box| %>
-      <%= box.title %><br>
+      <%= link_to box.title, box_path(box) %><br>
       <%= box.date_of_box %><br>
     <% end %>
 </p>

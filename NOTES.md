@@ -75,13 +75,13 @@ Remember that the ability to perform the admin tasks should be limited to admini
 
 *** DOING TODAY 9/1:
 
-To meet the nested form and custom attribute writer you should be able to add up to three items to the box as part of creating the box, and if their title matches exactly an existing item, it should not create a new item, it should just join the box to an existing item. The size of the item should be stored in a join table joining the boxes and the items so one box may have the 3 oz kitty bright hair gel and another might have the 6oz.
+To meet the nested form and custom attribute writer you should be able to add up to three items to the box as part of creating the box, and if their title matches exactly an existing item, it should not create a new item, it should just join the box to an existing item. The size of the item should be stored in a join table joining the boxes and the items so one box may have the 3 oz kitty bright hair gel and another might have the 6oz. (DONE)
 
 To meet the nested resource requirements /boxes/1/items should show all of the items in box #1 to anyone who wants to see it (DONE)
 
-and boxes/1/items/new should allow an administrator to add a new item to a box.
+and boxes/1/items/new should allow an administrator to add a new item to a box. (DONE)
 
-/items/new should also allow an admin to add a new item to a box, but they'll have to select from a drop down list of boxes
+/items/new should also allow an admin to add a new item to a box, but they'll have to select from a drop down list of boxes (Currently, you can add items to boxes already because we are using the box id to get to the item)
 
 
 ---
