@@ -13,10 +13,10 @@
       <%= f.collection_select(:subscription_id, Subscription.all, :id, :level) %><br>
 
       <%= f.label :items %><br>
-        <p><%= f.collection_select :item_ids, Item.all, :id, :title %></p>
+        <p><%= f.collection_select :item_ids, Item.all, :id, :title, {include_blank: 'Select an item'} %></p>
 
 
-      <%= f.submit "Done" %>
+      <%= f.submit "Ship" %>
     <% end %>
 
   <% else %>

@@ -6,14 +6,19 @@ VISITOR (DONE)
 - Learn more about a particular description so I can decide whether or not it’s worth buying (detail page for subscription)
 - Purchase a subscription (don’t worry about processing payments - just ask for first name, last name and email)
 
-SUBSCRIBER
+SUBSCRIBER (DONE)
 - Cancel my subscription at any time so I don’t have to pay forever
 - See what boxes I have received and what each one contained so I can remember what stuff I got and where I could get more of it (this will require login including support for “forgotten password” as users who initially sign up won’t have a password, so they’ll need to have a link emailed to them to update it.: boxes INDEX page with links to each SHOW page
 
-ADMINISTRATOR
+ADMINISTRATOR (DONE)
 - Create a new box (subscription level, month and year to uniquely identify it and a title for the theme e.g. “cat coolers for summer”)
 - Add a new item to a box (title, description, image, size, URL to buy more from amazon or other partners)
 - Manually ship a box (when I click the “ship” button on the box it adds it to the history for all current subscribers - but not subscribers who have cancelled)
+
+TO DO ON 9/8/16:
+- On the page to create a box, the button is "SHIPPED". So how do we change the boolean value in the boxes table to switch to 'true' and then have it count towards the subscriber's "boxes received" list? (DONE)
+
+- When creating a new box, admin should have option to not select any item from the drop down.
 
 
 class User < ActiveRecord::Base

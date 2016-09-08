@@ -1,9 +1,14 @@
 <h2>Admin list of users</h2>
 
-<% @users.each do |user| %>
-  <u><%= user.first_name %> <%= user.last_name %></u><br>
-  <strong><%= link_to user.username, user_path(user) %></strong><br>
-  Email: <%= user.email %><br>
-  Role: <%= user.role %><br>
-  Last logged in: <%= user.last_sign_in_at %><br>
+<% if current_user.try(:admin?) %>
+  <% @users.each do |user| %>
+    <u><%= user.first_name %> <%= user.last_name %></u><br>
+    <strong><%= link_to user.username, user_path(user) %></strong><br>
+    Email: <%= user.email %><br>
+    Role: <%= user.role %><br>
+    Last logged in: <%= user.last_sign_in_at %><br>
+  <% end %>
+<% else %>
+<p>You are not authorized to view this page.</p>
+<p><%= link_to "Go back", boxes_path %></p>
 <% end %>

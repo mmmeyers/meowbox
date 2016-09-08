@@ -1,29 +1,37 @@
-<h2>SIGN UP</h2>
+<% if user_signed_in? %>
+  <p>You've already signed up!</p>
+  <p><%= link_to "Back", root_path %>
 
-<%= form_for(@user) do |f| %>
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %><br>
+<% else %>
 
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %><br>
+  <h2>SIGN UP</h2>
 
-  <%= f.label :username %>
-  <%= f.text_field :username %><br>
+  <%= form_for(@user) do |f| %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %><br>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %><br>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %><br>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %><br>
+    <%= f.label :username %>
+    <%= f.text_field :username %><br>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %><br>
+    <%= f.label :email %>
+    <%= f.email_field :email %><br>
 
-  <%= f.label :subscription_level %>
-  <%= f.collection_select(:subscription_id, Subscription.all, :id, :level) %><br>
+    <%= f.label :password %>
+    <%= f.password_field :password %><br>
 
-  <%= f.label :role %>
-  <%= f.select :role, ["subscriber"] %><br>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %><br>
 
-  <%= f.submit %>
+    <%= f.label :subscription_level %>
+    <%= f.collection_select(:subscription_id, Subscription.all, :id, :level) %><br>
+
+    <%= f.label :role %>
+    <%= f.select :role, ["subscriber"] %><br>
+
+    <%= f.submit %>
+  <% end %>
+
 <% end %>

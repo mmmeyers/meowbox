@@ -9,6 +9,7 @@ Here we want to show all items in a particular box. Route is boxes/1/items
   <% end %>
 </ul>
 
-
-<p><%= link_to "Add a new item to this box", new_box_item_path(@box) %></p>
+<% if current_user.try(:admin?) %>
+  <p><%= link_to "Add a new item to this box", new_box_item_path(@box) %></p>
+<% end %>
 <p><%= link_to "Go back", boxes_path %></p>
