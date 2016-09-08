@@ -2,8 +2,9 @@ class Box < ActiveRecord::Base
   belongs_to :subscription
   has_many :box_items
   has_many :items, through: :box_items
-
-
+  validates :title, presence: true
+  validates :title, uniqueness: true
+  validates :date_of_box, presence: true
 
   def items_attributes=(item_attributes)
     item_attributes.values.each do |item_attribute|

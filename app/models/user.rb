@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   enum role: {visitor: 0, subscriber: 1, admin: 2}
   belongs_to :subscription
   has_many :boxes
+  validates :username, presence: true
   validates :username, uniqueness: true
   after_initialize :set_default_role, :if => :new_record?
 
