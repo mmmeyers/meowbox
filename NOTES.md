@@ -24,8 +24,12 @@ TO DO ON 9/8 and 9/9/16:
 
 - Work on validations
   - User must have unique username, email, password upon signing up (DONE)
-  - Box must have title and description
+  - Box must have title and date (DONE)
   - Item must have title, description, and size
+
+  - Added validation for item limit, but doesn't display errors nicely
+
+  ** NEED TO FIGURE OUT HOW TO DISPLAY ERROR MESSAGES FOR ITEMS
 
 
 class User < ActiveRecord::Base

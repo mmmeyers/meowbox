@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to box_path(@box)
     else
-      render 'new'
+      render :new
     end
   end
 

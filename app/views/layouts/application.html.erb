@@ -27,10 +27,10 @@
   </div>
 </nav>
 
-
   <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, id: "flash_#{name}" %>
+  <%= content_tag :div, msg, class: "alert alert-info" %>
   <% end %>
+
 
   <%= yield %>
 
