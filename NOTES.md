@@ -27,9 +27,7 @@ TO DO ON 9/8 and 9/9/16:
   - Box must have title and date (DONE)
   - Item must have title, description, and size
 
-  - Added validation for item limit, but doesn't display errors nicely
-
-  ** NEED TO FIGURE OUT HOW TO DISPLAY ERROR MESSAGES FOR ITEMS
+  ** NEED TO FIGURE OUT HOW TO DISPLAY ERROR MESSAGES FOR ITEMS (DONE)
 
 
 class User < ActiveRecord::Base

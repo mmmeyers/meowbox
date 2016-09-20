@@ -8,14 +8,19 @@ class ItemsController < ApplicationController
   def create
     @box = Box.find(params[:box_id])
     @item = @box.items.build(item_params)
-    @item.box_id = @box.id
-    @box.items << @item
-    if @item.save
-      redirect_to box_path(@box)
-    else
-      render :new
+    @item.box_id = @item.id
+    respond_to do |format|
+      if @item.save
+        @box.items << @item
+        format.html { redirect_to(@box, :notice => 'Item was successfully created.') }
+        format.xml  { render :xml => @box, :status => :created, :location => @box }
+      else
+        format.html { render :new }
+        format.xml  { render :xml => @item.errors, :status => :unprocessable_entity }
+      end
     end
   end
+
 
   def index
     @box = Box.find(params[:box_id])
