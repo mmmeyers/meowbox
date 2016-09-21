@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   validates :username, presence: true
   validates :username, uniqueness: true
   after_initialize :set_default_role, :if => :new_record?
+  after_initialize :joined_at, :if => :new_record?
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -13,6 +14,10 @@ class User < ActiveRecord::Base
 
   def set_default_role
     self.role ||= :visitor
+  end
+
+  def joined_at
+    Date.today.to_s(:long)
   end
 
   def boxes

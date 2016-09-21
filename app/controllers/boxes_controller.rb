@@ -26,7 +26,7 @@ class BoxesController < ApplicationController
   private
 
     def box_params
-      params.require(:box).permit(:title, :date_of_box, :subscription_id, :item_ids, items_attributes: [:title, :description, :size])
+      params.require(:box).permit(:title, :date_of_box, :shipped, :subscription_id, :item_ids, items_attributes: [:title, :description, :size])
     end
 
 end

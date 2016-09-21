@@ -10,7 +10,7 @@ SUBSCRIBER (DONE)
 - Cancel my subscription at any time so I don’t have to pay forever
 - See what boxes I have received and what each one contained so I can remember what stuff I got and where I could get more of it (this will require login including support for “forgotten password” as users who initially sign up won’t have a password, so they’ll need to have a link emailed to them to update it.: boxes INDEX page with links to each SHOW page
 
-  9/20/16: Currently, when a new user signs up, they get assigned to whatever box is in the same subscription category as they are, so I need to fix this. Have a user linked to a box only when it is shipped by the admin. How does a user get affiliate with a subscription and a box? How do I assign a user a box only after it was shipped, and not to an old box that was already shipped? Maybe the 'shipped' in boxes needs to default to false? Right now it looks like they are 'false' so when shipped is changed to true it needs to be associated with all subscribed users.
+  9/20/16: Currently, when a new user signs up, they get assigned to whatever box is in the same subscription category as they are, so I need to fix this. Have a user linked to a box only when it is shipped by the admin. How does a user get affiliated with a subscription and a box? How do I assign a user a box only after it was shipped, and not to an old box that was already shipped? Maybe the 'shipped' in boxes needs to default to false? Right now it looks like they are 'false' so when shipped is changed to true it needs to be associated with all subscribed users.
 
 ADMINISTRATOR (DONE)
 - Create a new box (subscription level, month and year to uniquely identify it and a title for the theme e.g. “cat coolers for summer”)
@@ -27,7 +27,7 @@ TO DO ON 9/8 and 9/9/16:
 - Work on validations
   - User must have unique username, email, password upon signing up (DONE)
   - Box must have title and date (DONE)
-  - Item must have title, description, and size
+  - Item must have title, description, and size (DONE)
 
   ** NEED TO FIGURE OUT HOW TO DISPLAY ERROR MESSAGES FOR ITEMS (DONE)
 
@@ -103,9 +103,9 @@ and boxes/1/items/new should allow an administrator to add a new item to a box. 
 ---
 
 1. What is the root route? - 'subscriptions#index'
-  - A visitor can see the list of available subscriptions as well as click on the links to see each individual one, and they can subscribe using the link (which also creates a new user).
+  - A visitor can see the list of available subscriptions as well as click on the links to see each individual one, and they can subscribe using the link (which also creates a new user). (DONE)
 
-2. When a user signs up or logs in, they are taken to the subscriptions index page where they can see each individual item and then subscribe.
+2. When a user signs up or logs in, they are taken to the subscriptions index page where they can see each individual item and then subscribe. (DONE)
 
 3. Add roles to user class. (DONE)
 

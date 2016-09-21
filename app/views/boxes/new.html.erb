@@ -15,7 +15,6 @@
         </div>
       <% end %>
 
-
     <% if @box.errors[:title].empty? %>
       <div class="field">
     <% else %>
@@ -37,13 +36,16 @@
       <%= f.label "Subscription level" %>
       <%= f.collection_select(:subscription_id, Subscription.all, :id, :level) %><br>
 
+      <%= f.label :shipped %>
+      <%= f.select :shipped, ["true"] %><br>
+
       <%= f.label :items %><br>
         <p><%= f.collection_select :item_ids, Item.all, :id, :title, {include_blank: 'Select an item'} %></p>
         <p>Or add a new item: <%= f.fields_for :items, @box.items.build do |items_fields| %></p>
               Name: <%= items_fields.text_field :title %><br>
               Description: <%= items_fields.text_area :description %><br>
               Size: <%= items_fields.text_field :size %><br>
-          <% end %>
+          <% end %><br>
       <%= f.submit "Create Box" %>
     <% end %>
 

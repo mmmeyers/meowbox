@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160921164908) do
+ActiveRecord::Schema.define(version: 20160921214318) do
 
   create_table "box_items", force: :cascade do |t|
     t.integer  "box_id"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20160921164908) do
     t.string   "last_sign_in_ip"
     t.boolean  "admin",                  default: false
     t.integer  "role"
+    t.date     "joined_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
