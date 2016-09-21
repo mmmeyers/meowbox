@@ -6,7 +6,6 @@
     <%= form_for([@box, @box.items.build]) do |f| %>
     <%= render "shared/error_messages", :target => @item %>
 
-
     <div class="field">
       <%= f.label :title %>
       <%= f.text_field :title %><br>

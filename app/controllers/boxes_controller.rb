@@ -11,6 +11,7 @@ class BoxesController < ApplicationController
   def create
     @box = Box.new(box_params)
     if @box.save
+      @box.shipped = true
       redirect_to box_path(@box)
     else
       render 'new'

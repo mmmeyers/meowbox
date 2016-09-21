@@ -7,8 +7,8 @@
   <% end %>
 </ul>
 
-<p><%= link_to "See box detail", box_items_path(@box) %></p>
-<p><%= link_to "Back to boxes", boxes_path %></p>
+<h5><%= link_to "See box detail", box_items_path(@box) %></h5>
+<h5><%= link_to "Back to boxes", boxes_path %></h5>
 
 <% if current_user.try(:admin?) %>
   <p><%= render 'items/form' %><p>

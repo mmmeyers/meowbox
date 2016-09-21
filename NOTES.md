@@ -10,6 +10,8 @@ SUBSCRIBER (DONE)
 - Cancel my subscription at any time so I don’t have to pay forever
 - See what boxes I have received and what each one contained so I can remember what stuff I got and where I could get more of it (this will require login including support for “forgotten password” as users who initially sign up won’t have a password, so they’ll need to have a link emailed to them to update it.: boxes INDEX page with links to each SHOW page
 
+  9/20/16: Currently, when a new user signs up, they get assigned to whatever box is in the same subscription category as they are, so I need to fix this. Have a user linked to a box only when it is shipped by the admin. How does a user get affiliate with a subscription and a box? How do I assign a user a box only after it was shipped, and not to an old box that was already shipped? Maybe the 'shipped' in boxes needs to default to false? Right now it looks like they are 'false' so when shipped is changed to true it needs to be associated with all subscribed users.
+
 ADMINISTRATOR (DONE)
 - Create a new box (subscription level, month and year to uniquely identify it and a title for the theme e.g. “cat coolers for summer”)
 - Add a new item to a box (title, description, image, size, URL to buy more from amazon or other partners)
