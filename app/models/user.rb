@@ -17,11 +17,14 @@ class User < ActiveRecord::Base
   end
 
   def joined_at
-    Date.today.to_s(:long)
+    Date.today.strftime("%B %d, %Y")
   end
 
   def boxes
     self.subscription.boxes
+    #if date of box created is greater than user joined_at
   end
+
+
 
 end

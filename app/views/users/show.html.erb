@@ -4,15 +4,11 @@ Username: <%= @user.username %><br>
 Subscription: <%= @user.subscription.level %><br>
 Description: <%= @user.subscription.description %><br>
 Role: <%= @user.role %><br>
-
+Boxes: <% Box.where("created_at > ?", @user.created_at).find_each do |box| %>
+          <li><%= box.title %></li>
+      <% end %><br>
+Joined at: <%= @user.created_at.to_s(:long) %>
 <p>
-  <h4>Your boxes</h4>
-    <% @user.boxes.each do |box| %>
-      <%= link_to box.title, box_path(box) %><br>
-      <%= box.date_of_box %><br>
-    <% end %>
-</p>
-
 <p>
   <%= link_to "Want to cancel?", edit_user_registration_path %><br>
   <%= link_to "Go back", root_path %>
