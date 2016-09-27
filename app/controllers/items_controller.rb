@@ -8,7 +8,6 @@ class ItemsController < ApplicationController
   def create
     @box = Box.find(params[:box_id])
     @item = @box.items.build(item_params)
-    # @item.box_id = @item.id
     @item.box_id = @box.id
     respond_to do |format|
       if @item.save
