@@ -1,9 +1,9 @@
-<% if user_signed_in? %>
+<% if current_user.try(:subscriber?) %>
   <p>You've already signed up!</p>
   <p><%= link_to "Back", root_path %>
 
 <% else %>
 
-<%= render 'devise/registrations/new' %>
+  <%= render 'devise/registrations/new' %>
 
 <% end %>

@@ -1,13 +1,15 @@
-  <%= @user.first_name %> <%= @user.last_name %><br>
-  Email: <%= @user.email %><br>
-  Username: <%= @user.username %><br>
-  Subscription: <%= @user.subscription.level %><br>
-  Description: <%= @user.subscription.description %><br>
-  Role: <%= @user.role %><br>
-  Boxes: <% @user.boxes.where("created_at > ?", @user.created_at).find_each do |box| %>
-            <li><%= box.title %></li>
-        <% end %><br>
-  Joined at: <%= @user.created_at.to_s(:long) %>
+
+    <%= @user.first_name %> <%= @user.last_name %><br>
+    Email: <%= @user.email %><br>
+    Username: <%= @user.username %><br>
+    Subscription: <%= @user.subscription.level %><br>
+    Description: <%= @user.subscription.description %><br>
+    Role: <%= @user.role %><br>
+    Boxes: <% @user.boxes.where("created_at > ?", @user.created_at).find_each do |box| %>
+              <li><%= box.title %></li>
+          <% end %><br>
+    Joined at: <%= @user.created_at.to_s(:long) %>
+
   <p>
   <p>
     <%= link_to "Want to cancel?", edit_user_registration_path %><br>

@@ -8,9 +8,9 @@ class User < ActiveRecord::Base
   after_initialize :joined_at, :if => :new_record?
 
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   def set_default_role
     self.role ||= :visitor
@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
   def boxes
     self.subscription.boxes
     #if date of box created is greater than user joined_at
+  end
+
+  def password_required?
+   new_record? ? false : super
   end
 
 

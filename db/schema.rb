@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160921214318) do
+ActiveRecord::Schema.define(version: 20160928185739) do
 
   create_table "box_items", force: :cascade do |t|
     t.integer  "box_id"
@@ -68,8 +68,12 @@ ActiveRecord::Schema.define(version: 20160921214318) do
     t.boolean  "admin",                  default: false
     t.integer  "role"
     t.date     "joined_at"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
