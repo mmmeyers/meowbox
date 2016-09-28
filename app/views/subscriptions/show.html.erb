@@ -1,5 +1,5 @@
 <h2><%= @subscription.level %></h2>
 <h4><%= @subscription.description %></h4>
 
-<h5><%= link_to "Subscribe", new_user_path %></h5>
+<h5><%= link_to "Subscribe", edit_user_path(current_user) %></h5>
 <p><%= link_to "Go back", root_path %></p>

@@ -23,16 +23,6 @@
     <%= f.text_field :username, autofocus: true %>
   </div><br>
 
-  <% if current_user.try(:visitor?) %>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autofocus: true %>
-  </div><br>
-
-  <% end %>
-
-
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
