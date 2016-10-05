@@ -1,13 +1,12 @@
 <% if current_user.try(:subscriber?) %>
   <p>You've already signed up!</p>
   <p><%= link_to "Back", root_path %>
-
-<% elsif !current_user.confirmation_token.nil? %>
-hi
 <% end %>
 
-<% else %>
+<% if current_user.nil? %>
+  <%= render "/devise/registrations/new" %>
+<% end %>
 
-  <%= render 'devise/registrations/new' %>
-
+<% if current_user.try(:visitor?) %>
+  <%= link_to "Subscribe!", edit_user_path(current_user) %>
 <% end %>

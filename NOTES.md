@@ -4,7 +4,7 @@ Business objective:
 VISITOR (DONE)
 - See a list of monthly subscriptions (three subscription levels hard coded - $10/mo, $30/mo and $100/mo)
 - Learn more about a particular description so I can decide whether or not it’s worth buying (detail page for subscription)
-- Purchase a subscription (don’t worry about processing payments - just ask for first name, last name and email)
+- Purchase a subscription (don’t worry about processing payments - just ask for first name, last name and email) - ONCE THEY DO THIS, THEY BECOME A SUBSCRIBER, BUT BY SUBMITTING NAME AND EMAIL, THEY ARE PERSISTED USERS.
 
 SUBSCRIBER (DONE)
 - Cancel my subscription at any time so I don’t have to pay forever
@@ -30,6 +30,29 @@ TO DO ON 9/8 and 9/9/16:
   - Item must have title, description, and size (DONE)
 
   ** NEED TO FIGURE OUT HOW TO DISPLAY ERROR MESSAGES FOR ITEMS (DONE)
+
+
+SEPT 27:
+
+When a user comes to the subscription page and wants to sign up, they get the Devise form to do so, and once it is submitted, they become a visitor.
+
+Then, in order to become a subscriber, they fill in another form with their password.
+
+I need to build a mailer that sends an email for them to confirm and set up a password. Where will this link to on the site?
+
+The email sends, so user is confirmed. But the redirect is to the /users/sign_in page, which is a normal login page. I need it to redirect to a set up your password page.
+
+OCT 4:
+
+We need maybe an if statement to go on the subscriptions show page.
+If user is already signed up, then they should be redirected to a form to actually sign up for that subscription
+If user is not signed up, they should be redirected to the sign up page (as it currently stands)
+
+What is the difference between a user who has signed up but hasn't subscribed, and a user who has already subscribed, and a user who hasn't done either? We have 3 types of users right now:
+
+0: has not signed up yet
+1: has signed up but not subscribed
+2: has subscribed
 
 
 class User < ActiveRecord::Base
