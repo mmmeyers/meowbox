@@ -12,4 +12,5 @@
 
 <% if current_user.try(:admin?) %>
   <p><%= render 'items/form' %><p>
+  <p><%= link_to "Ready to ship?", edit_box_path %></p>
 <% end %>

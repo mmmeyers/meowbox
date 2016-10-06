@@ -32,7 +32,7 @@ TO DO ON 9/8 and 9/9/16:
   ** NEED TO FIGURE OUT HOW TO DISPLAY ERROR MESSAGES FOR ITEMS (DONE)
 
 
-SEPT 27:
+SEPT 27: (DONE)
 
 When a user comes to the subscription page and wants to sign up, they get the Devise form to do so, and once it is submitted, they become a visitor.
 
@@ -42,7 +42,7 @@ I need to build a mailer that sends an email for them to confirm and set up a pa
 
 The email sends, so user is confirmed. But the redirect is to the /users/sign_in page, which is a normal login page. I need it to redirect to a set up your password page.
 
-OCT 4:
+OCT 4: (DONE)
 
 We need maybe an if statement to go on the subscriptions show page.
 If user is already signed up, then they should be redirected to a form to actually sign up for that subscription
@@ -50,9 +50,16 @@ If user is not signed up, they should be redirected to the sign up page (as it c
 
 What is the difference between a user who has signed up but hasn't subscribed, and a user who has already subscribed, and a user who hasn't done either? We have 3 types of users right now:
 
-0: has not signed up yet
-1: has signed up but not subscribed
-2: has subscribed
+0: has not signed up yet (does not have a role, is nil)
+1: has signed up but not subscribed user.role == visitor
+2: has subscribed user.role == subscriber
+
+OCT 5:
+
+We need to make it so that the admin can ship a box manually without it being automatically shipped when created. This way, the admin can still edit it and click a button to ship.
+
+<%= f.label :shipped %>
+<%= f.select :shipped, ["true"] %><br>
 
 
 class User < ActiveRecord::Base

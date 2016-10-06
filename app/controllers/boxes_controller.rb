@@ -11,7 +11,7 @@ class BoxesController < ApplicationController
   def create
     @box = Box.new(box_params)
     if @box.save
-      @box.shipped = true
+      # @box.shipped = true
       redirect_to box_path(@box)
     else
       render 'new'
@@ -21,6 +21,16 @@ class BoxesController < ApplicationController
   def show
     @box = Box.find(params[:id])
     @item = Item.new
+  end
+
+  def edit
+    @box = Box.find(params[:id])
+  end
+
+  def update
+    @box = Box.find(params[:id])
+    @box.shipped = true
+    redirect_to boxes_path
   end
 
   private

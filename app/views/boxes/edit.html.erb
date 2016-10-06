@@ -1,6 +1,16 @@
+<h2>Ship this box!</h2>
+<h4>Confirm the details below then click to ship!</h4>
+Box name: <%= @box.title %><br>
+This box contains the following:<br>
+<% @box.items.each do |item| %>
+  <li><%= item.title %> <%= link_to "delete", [@box, item], :method => :delete %></li>
+<% end %>
+
+
+
 <% if current_user.try(:admin?) %>
 
-  <h2>Create a new box</h2>
+  <h2>Make corrections to this box</h2>
 
     <%= form_for(@box) do |f| %>
       <% if @box.errors.any? %>
@@ -30,11 +40,7 @@
 
       <%= f.label :items %><br>
         <p><%= f.collection_select :item_ids, Item.all, :id, :title, {include_blank: 'Select an item'} %></p>
-        <p>You must add a new item: <%= f.fields_for :items, @box.items.build do |items_fields| %></p>
-              Name: <%= items_fields.text_field :title %><br>
-              Description: <%= items_fields.text_area :description %><br>
-              Size: <%= items_fields.text_field :size %><br>
-          <% end %><br>
+
       <%= f.submit "Create Box" %>
     <% end %>
 

@@ -32,6 +32,13 @@ class ItemsController < ApplicationController
     @item = @box.items.find(params[:id])
   end
 
+  def destroy
+    @box = Box.find(params[:box_id])
+    @item = @box.items.find(params[:id])
+    @item.destroy
+    redirect_to @box, :notice => "Item deleted"
+  end
+
   private
 
     def item_params
