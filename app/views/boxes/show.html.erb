@@ -10,7 +10,10 @@
 <h5><%= link_to "See box detail", box_items_path(@box) %></h5>
 <h5><%= link_to "Back to boxes", boxes_path %></h5>
 
-<% if current_user.try(:admin?) %>
-  <p><%= render 'items/form' %><p>
-  <p><%= link_to "Ready to ship?", edit_box_path %></p>
+
+<% if !@box.shipped %>
+  <% if current_user.try(:admin?) %>
+    <p><%= render 'items/form' %><p>
+    <p><%= link_to "Ready to ship?", edit_box_path %></p>
+  <% end %>
 <% end %>
