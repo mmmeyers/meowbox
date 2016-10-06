@@ -30,6 +30,7 @@ class BoxesController < ApplicationController
   def update
     @box = Box.find(params[:id])
     @box.shipped = true
+    @box.save
     redirect_to boxes_path
   end
 
