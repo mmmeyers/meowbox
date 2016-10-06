@@ -9,6 +9,8 @@
 </ul>
 
 <% if current_user.try(:admin?) %>
-  <p><%= link_to "Add a new item to this box", new_box_item_path(@box) %></p>
+  <% if !@box.shipped %>
+    <p><%= link_to "Add a new item to this box", new_box_item_path(@box) %></p>
+  <% end %>
 <% end %>
 <p><%= link_to "Go back", boxes_path %></p>

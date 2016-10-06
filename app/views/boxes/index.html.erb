@@ -2,7 +2,7 @@
   <ul>
     <% @boxes.each do |box| %>
       <% if current_user.try(:admin?) %>
-        <li><%= link_to box.title, box_path(box) %>, <%= box.subscription.level %>, shipped on <%= box.created_at %></li>
+        <li><%= link_to box.title, box_path(box) %>, <%= box.subscription.level %>, created at: <%= box.created_at.strftime("%m/%d/%y") %>, shipped? <%= box.shipped? %></li>
       <% else %>
         <li><%= link_to box.title, box_items_path(box) %> - <%= box.subscription.level %></li>
       <% end %>
