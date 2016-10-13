@@ -8,9 +8,5 @@
   <% end %>
 </ul>
 
-<% if current_user.try(:admin?) %>
-  <% if !@box.shipped %>
-    <p><%= link_to "Add a new item to this box", new_box_item_path(@box) %></p>
-  <% end %>
-<% end %>
-<p><%= link_to "Go back", boxes_path %></p>
+
+<p><%= link_to "Go back", box_path(@box) %></p>

@@ -4,7 +4,7 @@
 
 <% if current_user.try(:admin?) %>
 <h2>Edit this item</h2>
-  <%= form_for [@box, @item], :html => { :multipart => true } do |f| %>
+  <%= form_for [@box, @item] do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %><br>
 

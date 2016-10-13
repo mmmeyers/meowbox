@@ -12,6 +12,7 @@
 
 
 <% if !@box.shipped %>
+  <h5>This box has not yet been shipped.</h5>
   <% if current_user.try(:admin?) %>
     <p><%= render 'items/form' %><p>
     <p><%= link_to "Ready to ship?", edit_box_path %></p>

@@ -12,6 +12,10 @@
 
   <p>
   <p>
-    <%= link_to "Want to cancel?", edit_user_registration_path %><br>
-    <%= link_to "Go back", root_path %>
+    <% if current_user.id == @user.id %>
+      <%= link_to "Want to cancel?", edit_user_registration_path %><br>
+      <%= link_to "Go back", root_path %><br>
+    <% elsif current_user.try(:admin?) %>
+      <%= link_to "Go back", users_path %>
+    <% end %>
   </p>

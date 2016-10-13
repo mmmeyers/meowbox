@@ -45,3 +45,11 @@
   <%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation, autocomplete: "off" %>
 </div>
+
+Took off from box items page (items index)
+
+<% if current_user.try(:admin?) %>
+  <% if !@box.shipped %>
+    <p><%= link_to "Add a new item to this box", new_box_item_path(@box) %></p>
+  <% end %>
+<% end %>

@@ -3,46 +3,19 @@
 Box name: <%= @box.title %><br>
 This box contains the following:<br>
 <% @box.items.each do |item| %>
-  <li><%= item.title %> <%= link_to "delete", [@box, item], :method => :delete %> <%= link_to "edit", [@box, item] %></li>
+  <li><%= item.title %> <%= link_to "delete", [@box, item], :method => :delete %>
+      <%= link_to "edit", edit_box_item_path(@box, item) %></li>
 <% end %>
-
-
 
 <% if current_user.try(:admin?) %>
 
   <h2>Do you need to make corrections to this box?</h2>
 
     <%= form_for(@box) do |f| %>
-      <% if @box.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@box.errors.count, "error") %> prohibited this box from being saved:</h2>
-
-          <ul>
-            <% @box.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-
-    <% if @box.errors[:title].empty? %>
-      <div class="field">
-    <% else %>
-      <div class="field_with_errors">
-    <% end %>
-        <%= f.label :title %>
-        <%= f.text_field :title %><br>
-      </div>
-
-      <%= f.label "Subscription level" %>
-      <%= f.collection_select(:subscription_id, Subscription.all, :id, :level) %><br>
-
-      <%= f.submit "Create Box" %>
+      <%= f.submit "Ship This Box" %> (Note: Shipping is final and cannot be undone)
     <% end %>
 
   <% else %>
-
     <p>You are not authorized to view this page.</p>
     <p><%= link_to "Go back", subscriptions_path %></p>
-
 <% end %>
