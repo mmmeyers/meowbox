@@ -3,14 +3,14 @@
 Box name: <%= @box.title %><br>
 This box contains the following:<br>
 <% @box.items.each do |item| %>
-  <li><%= item.title %> <%= link_to "delete", [@box, item], :method => :delete %></li>
+  <li><%= item.title %> <%= link_to "delete", [@box, item], :method => :delete %> <%= link_to "edit", [@box, item] %></li>
 <% end %>
 
 
 
 <% if current_user.try(:admin?) %>
 
-  <h2>Make corrections to this box</h2>
+  <h2>Do you need to make corrections to this box?</h2>
 
     <%= form_for(@box) do |f| %>
       <% if @box.errors.any? %>
@@ -36,10 +36,6 @@ This box contains the following:<br>
 
       <%= f.label "Subscription level" %>
       <%= f.collection_select(:subscription_id, Subscription.all, :id, :level) %><br>
-
-
-      <%= f.label :items %><br>
-        <p><%= f.collection_select :item_ids, Item.all, :id, :title, {include_blank: 'Select an item'} %></p>
 
       <%= f.submit "Create Box" %>
     <% end %>
