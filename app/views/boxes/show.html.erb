@@ -1,5 +1,5 @@
 <h3><%= @box.title %></h3>
-<p><%= @box.date_of_box %></p>
+<p>Created on: <%= @box.created_at.strftime("%m/%d/%y") %></p>
 <p>Subscription Level: <%= @box.subscription.level %></p>
 <ul><strong>ITEMS:</strong>
   <% @box.items.each do |item| %>

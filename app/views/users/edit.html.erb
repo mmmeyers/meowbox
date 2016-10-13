@@ -13,7 +13,6 @@
   <%= f.label :email %>
   <%= f.email_field :email %><br>
 
-
   <%= f.label :subscription_level %>
   <%= f.collection_select(:subscription_id, Subscription.all, :id, :level) %><br>
 

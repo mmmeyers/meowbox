@@ -5,8 +5,8 @@
     Subscription: <%= @user.subscription.level %><br>
     Description: <%= @user.subscription.description %><br>
     Role: <%= @user.role %><br>
-    Boxes: <% @user.boxes.where("created_at > ?", @user.created_at).find_each do |box| %>
-              <li><%= box.title %></li>
+    Boxes: <% @user.boxes.where("updated_at > ?", @user.created_at).find_each do |box| %>
+              <li><%= box.title %>, <%= box.created_at.strftime("%m/%d/%y") %></li>
           <% end %><br>
     Joined at: <%= @user.created_at.to_s(:long) %>
 

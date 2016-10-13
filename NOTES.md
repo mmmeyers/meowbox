@@ -54,12 +54,9 @@ What is the difference between a user who has signed up but hasn't subscribed, a
 1: has signed up but not subscribed user.role == visitor
 2: has subscribed user.role == subscriber
 
-OCT 5:
+OCT 5: (DONE)
 
 We need to make it so that the admin can ship a box manually without it being automatically shipped when created. This way, the admin can still edit it and click a button to ship.
-
-<%= f.label :shipped %>
-<%= f.select :shipped, ["true"] %><br>
 
 
 class User < ActiveRecord::Base
