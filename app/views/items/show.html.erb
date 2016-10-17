@@ -5,4 +5,5 @@
 <p><%= image_tag @item.photo.url %></p>
 
 
-<%= link_to "Edit this item", edit_box_item_path(@box, @item) %>
+<h4><%= link_to "Edit this item", edit_box_item_path(@box, @item) %></h4>
+<h4><%= link_to "Go back", :back %></h4>
