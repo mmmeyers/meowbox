@@ -1,6 +1,8 @@
 <h4><%= @item.title %></h4>
 
 <p><%= @item.description %></p>
+<p><%= @item.url %></p>
+<p><%= image_tag @item.photo.url %></p>
 
 
 <%= link_to "Edit this item", edit_box_item_path(@box, @item) %>
