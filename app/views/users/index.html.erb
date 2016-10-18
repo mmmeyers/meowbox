@@ -8,6 +8,8 @@
     Role: <%= user.role %><br>
     Last logged in: <%= user.last_sign_in_at %><br>
   <% end %>
+  <p>
+<p><%= link_to "Go back", boxes_path %></p>
 <% else %>
 <p>You are not authorized to view this page.</p>
 <p><%= link_to "Go back", boxes_path %></p>
