@@ -4,12 +4,15 @@
 
 <% if current_user.try(:admin?) %>
 <h2>Edit this item</h2>
-  <%= form_for [@box, @item] do |f| %>
+  <%= form_for [@box, @item], html: { multipart: true } do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %><br>
 
     <%= f.label :description %>
     <%= f.text_area :description %><br>
+
+    <%= f.label :photo %>
+    <%= f.file_field :photo %><br>
 
     <%= f.submit %>
   <% end %>
