@@ -8,5 +8,8 @@
 <% end %>
 
 <% if current_user.try(:visitor?) %>
-  <%= link_to "Subscribe!", edit_user_path(current_user) %>
+  <p>Thank you for deciding to subscribe to MeowBox, where you can sign up for a monthly subscription for toys and
+    treats for your favorite feline! Be sure to take the time to browse through each subscription option before deciding.
+  <h5><%= link_to "Ready? Click here to Subscribe!", edit_user_path(current_user) %></h5>
+  <h5><%= link_to "Not sure yet?", :back %></h5>
 <% end %>

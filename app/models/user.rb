@@ -24,10 +24,10 @@ class User < ActiveRecord::Base
     self.subscription.boxes
     #if date of box created is greater than user joined_at
   end
-  # 
-  # def password_required?
-  #  new_record? ? false : super
-  # end
+
+  def password_required?
+   new_record? ? false : super
+  end
 
 
 

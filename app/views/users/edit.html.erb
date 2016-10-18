@@ -13,11 +13,11 @@
   <%= f.label :email %>
   <%= f.email_field :email %><br>
 
+  <h5>Choose the level you want from the drop-down menu</h5>
   <%= f.label :subscription_level %>
   <%= f.collection_select(:subscription_id, Subscription.all, :id, :level) %><br>
 
-  <%= f.label :role %>
-  <%= f.select :role, ["subscriber"] %><br>
 
-  <%= f.submit %>
+
+  <%= f.submit "Subscribe!" %>
 <% end %>

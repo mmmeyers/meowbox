@@ -30,8 +30,9 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
+    @user.role = "subscriber"
     if @user.save
-      redirect_to subscriptions_path
+      redirect_to subscriptions_path, :notice => "Subscription Successful!"
     else
       render 'edit'
     end
