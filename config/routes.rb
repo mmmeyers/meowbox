@@ -7,9 +7,8 @@ Rails.application.routes.draw do
   resources :users
 
 
-
-    resources :boxes do
-      resources :items
-    end
+  resources :boxes do
+    resources :items
+  end
 
 end

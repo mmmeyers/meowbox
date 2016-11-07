@@ -5,6 +5,10 @@ class Box < ActiveRecord::Base
   validates :title, presence: true
   validates :title, uniqueness: true
 
+  def self.by_subscription(subscription_id)
+    where(:subscription => subscription_id)
+  end
+
   def items_attributes=(item_attributes)
     item_attributes.values.each do |item_attribute|
       item = Item.find_or_create_by(item_attribute)
