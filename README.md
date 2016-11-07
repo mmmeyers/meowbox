@@ -1,28 +1,4 @@
-== README
+Welcome to MEOWBOX, a website where people can sign up for a monthly subscription for toys and treats for their favorite feline!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+To get started, fork this repository and then clone to your local machine. Run bundle install, then start the Rails
+server and you're ready to go.

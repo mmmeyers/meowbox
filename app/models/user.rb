@@ -29,6 +29,4 @@ class User < ActiveRecord::Base
    new_record? ? false : super
   end
 
-
-
 end

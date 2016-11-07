@@ -1,11 +1,11 @@
 class BoxesController < ApplicationController
 
   def index
-    @boxes = Box.all
+    # @boxes = Box.all
     @subscriptions = Subscription.all
 
     if !params[:subscription].blank?
-      @boxes = Box.by_subscription(params[:subscription]) # .by_user comes from the Post model - doesn't have to query the db
+      @boxes = Box.by_subscription(params[:subscription]) # .by_subscription comes from the Box model - doesn't have to query the db
     else
       @boxes = Box.all
     end
