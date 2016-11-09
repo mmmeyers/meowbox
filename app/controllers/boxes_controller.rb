@@ -37,6 +37,7 @@ class BoxesController < ApplicationController
   def update
     @box = Box.find(params[:id])
     @box.shipped = true
+    @box.update_attributes(box_params)
     @box.save
     redirect_to boxes_path, :notice => "Your box was shipped!"
   end

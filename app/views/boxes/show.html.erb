@@ -1,20 +1,24 @@
 <h3><%= @box.title %></h3>
-<p>Created on: <%= @box.created_at.strftime("%m/%d/%y") %></p>
-<p>Subscription Level: <%= @box.subscription.level %></p>
-<ul><strong>ITEMS:</strong>
-  <% @box.items.each do |item| %>
-    <li><%= item.title %> : <%= item.description %> (size: <%= item.size %>)</li>
-  <% end %>
-</ul>
+Created on: <%= @box.created_at.strftime("%m/%d/%y") %><br>
+Subscription Level: <%= @box.subscription.level %><br>
+<p>
+  <ul><strong>ITEMS:</strong> (<%= link_to "See item details", box_items_path(@box) %>)
+    <% @box.items.each do |item| %>
+      <li><%= item.title %> : <%= item.description %> (size: <%= item.size %>) | <%= link_to "edit", edit_box_item_path(@box, item) %> | <%= link_to "delete", [@box, item], :method => :delete %> Note: deleting is final!
+      </li>
+    <% end %>
+  </ul>
+</p>
 
-<h5><%= link_to "See box detail", box_items_path(@box) %></h5>
+<p>
+  <% if !@box.shipped %>
+    <% if current_user.try(:admin?) %>
+      <p><%= render 'items/form' %><p>
+      <p>
+      <mark>**This box has not yet been shipped.**</mark> - <%= link_to "Ready to ship?", edit_box_path %>
+    </p>
+    <% end %>
+  <% end %>
+</p>
+
 <h5><%= link_to "Back to boxes", boxes_path %></h5>
-
-
-<% if !@box.shipped %>
-  <h5>This box has not yet been shipped.</h5>
-  <% if current_user.try(:admin?) %>
-    <p><%= render 'items/form' %><p>
-    <p><%= link_to "Ready to ship?", edit_box_path %></p>
-  <% end %>
-<% end %>
