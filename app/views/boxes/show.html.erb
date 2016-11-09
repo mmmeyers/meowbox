@@ -1,6 +1,8 @@
 <h3><%= @box.title %></h3>
 Created on: <%= @box.created_at.strftime("%m/%d/%y") %><br>
 Subscription Level: <%= @box.subscription.level %><br>
+
+Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
 <p>
   <ul><strong>ITEMS:</strong> (<%= link_to "See item details", box_items_path(@box) %>)
     <% @box.items.each do |item| %>
