@@ -1,5 +1,8 @@
 <h2>Edit your profile</h2>
-<h4>Your current subscription level is <%= @user.subscription.level %></h4>
+
+<% if !@user.subscription.nil? %>
+  <h4>Your current subscription level is <%= @user.subscription.level %></h4>
+<% end %>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
