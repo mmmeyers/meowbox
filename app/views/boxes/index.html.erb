@@ -1,5 +1,5 @@
 <h2>All Boxes</h2>
-  <ul>
+  <ul class="boxes">
     <% @boxes.each do |box| %>
       <% if current_user.try(:admin?) %>
         <li><%= link_to box.title, box_path(box) %>, <%= box.subscription.level %>, created at: <%= box.created_at.strftime("%m/%d/%y") %>, shipped? <%= box.shipped? %></li>
