@@ -9,6 +9,7 @@ class BoxesController < ApplicationController
     else
       @boxes = Box.page(params[:page])
     end
+    render action: :index, layout: request.xhr? == nil
   end
 
 
