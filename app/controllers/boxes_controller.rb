@@ -7,7 +7,7 @@ class BoxesController < ApplicationController
     if !params[:subscription].blank?
       @boxes = Box.by_subscription(params[:subscription]) # .by_subscription comes from the Box model - doesn't have to query the db
     else
-      @boxes = Box.all
+      @boxes = Box.page(params[:page])
     end
   end
 
