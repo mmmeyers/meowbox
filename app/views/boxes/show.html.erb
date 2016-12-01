@@ -27,9 +27,12 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
 </p>
 
 <h5><%= link_to "Back to boxes", boxes_path %></h5>
+<h5><% if @box.next %>
+  <%= link_to 'Next', @box.next%>
+<% end%></h5>
 
 <script type="text/javascript" charset="utf-8">
-  $(document).ready(function() {
+  $(function() {
     $("a.load_items").on("click", function(e) {
       $.ajax({
         method: "GET",
