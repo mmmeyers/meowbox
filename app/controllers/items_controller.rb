@@ -25,6 +25,7 @@ class ItemsController < ApplicationController
   def index
     @box = Box.find(params[:box_id])
     @items = @box.items
+    render 'items/index', :layout => false
   end
 
   def show

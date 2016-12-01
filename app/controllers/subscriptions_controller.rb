@@ -6,6 +6,10 @@ class SubscriptionsController < ApplicationController
 
   def show
     @subscription = Subscription.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @subscription }
+    end
   end
 
   private

@@ -30,7 +30,7 @@
 
       <%= f.label :items %><br>
         <p><%= f.collection_select :item_ids, Item.all, :id, :title, {include_blank: 'Select an item'} %></p>
-        
+
         <p>You must add a new item: <%= f.fields_for :items, @box.items.build do |items_fields| %></p>
               Name: <%= items_fields.text_field :title %><br>
               Description: <%= items_fields.text_area :description %><br>

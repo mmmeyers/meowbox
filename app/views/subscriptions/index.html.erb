@@ -4,6 +4,9 @@
           <% @subscriptions.each do |subscription| %>
           <li class="list-group-item">
             <h4 class="list-group-item-heading"><%= link_to subscription.level, subscription_path(subscription) %> </h4>
+            <div id="subscription-<%= subscription.id %>"></div>
+            <button class="js-more" data-id="<%= subscription.id %>">More Info</button>
+            <div id="subscription-<%= subscription.id %>-level"></div>
           </li>
           <% end %>
 
@@ -19,7 +22,7 @@
 
           <li class="list-group-item">
             <h4 class="list-group-item-heading">
-              <%= link_to "See our boxes!", boxes_path %>
+              <%= link_to "See our boxes", boxes_path %>
             </h4>
           </li>
 
@@ -40,3 +43,15 @@
         </ul>
 
 </div><!-- end container -->
+
+<script type="text/javascript" charset="UTF-8">
+$(function() {
+  $(".js-more").on("click", function() {
+    var id = $(this).data("id");
+    $.get("/subscriptions/" + id + ".json", function(data) {
+      var descriptionText = "<p>" + data["description"] + "</p>";
+      $("#subscription-" + data["id"]).html(descriptionText);
+    });
+  });
+});
+</script>

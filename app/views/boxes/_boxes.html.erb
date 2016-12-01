@@ -1,0 +1,22 @@
+<div id="boxes-index>"
+  <h4>Our Boxes</h4>
+      <ul class="boxes">
+        <% @boxes.each do |box| %>
+          <% if current_user.try(:admin?) %>
+            <li><%= link_to box.title, box_path(box) %>, <%= box.subscription.level %>, created at: <%= box.created_at.strftime("%m/%d/%y") %>, shipped? <%= box.shipped? %></li>
+          <% else %>
+            <li><%= link_to box.title, box_items_path(box) %> - <%= box.subscription.level %></li>
+          <% end %>
+        <% end %>
+      </ul>
+
+    <%= page_entries_info @boxes %><br>
+    <%= paginate @boxes %>
+
+    <p></p>
+
+    <p><%= link_to "Go back", subscriptions_path %></p>
+    <% if current_user.try(:admin?) %>
+      <p><%= link_to "Create new box", new_box_path %><p>
+    <% end %>
+</div>
