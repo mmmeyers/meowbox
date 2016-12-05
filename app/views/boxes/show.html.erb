@@ -3,22 +3,60 @@ Created on: <%= @box.created_at.strftime("%m/%d/%y") %><br>
 Subscription Level: <%= @box.subscription.level %><br>
 
 Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
+
 <p>
-  <ul><strong>ITEMS:</strong> (<%= link_to "See item details", box_items_path(@box), :class => "load_items" %>)
+  <ol><strong>ITEMS:</strong> (<%= link_to "See item details", box_items_path(@box), :class => "load_items" %>)
     <% @box.items.each do |item| %>
       <li><%= item.title %> : <%= item.description %> (size: <%= item.size %>) | <%= link_to "edit", edit_box_item_path(@box, item) %> | <%= link_to "delete", [@box, item], :method => :delete %> Note: deleting is final!
       </li>
     <% end %>
-  </ul>
+  </ol>
 </p>
+
 
 <div class="items">
 </div>
 
+
 <p>
   <% if !@box.shipped %>
     <% if current_user.try(:admin?) %>
-      <p><%= render 'items/form' %><p>
+    <!-- Originally here, I rendered items/form inside a p tag -->
+    <% if current_user.try(:admin?) %>
+      <h2>Add an item to this box</h2>
+
+        <%= form_for([@box, @item]) do |f| %>
+        <%= render "shared/error_messages", :target => @item %>
+
+        <div class="field">
+          <%= f.label :item_name %>
+          <%= f.text_field :title %><br>
+        </div>
+
+        <div class="field">
+          <%= f.label :item_description %>
+          <%= f.text_area :description %><br>
+        </div>
+
+        <div class="field">
+          <%= f.label :size %>
+          <%= f.text_field :size %><br>
+        </div>
+
+        <div class="field">
+          <%= f.label :photo %>
+          <%= f.file_field :photo %><br>
+        </div>
+
+          <%= f.submit "Add Item" %>
+        <% end %>
+
+      <% else %>
+
+      <p>You are not authorized to view this page.</p>
+      <p><%= link_to "Go back", boxes_path %></p>
+
+      <% end %>
       <p>
       <mark>**This box has not yet been shipped.**</mark> - <%= link_to "Ready to ship?", edit_box_path %>
     </p>
@@ -40,5 +78,58 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
       });
       e.preventDefault();
     });
-  })
+
+    $("#new_item").on("submit", function(e) {
+      alert("you clicked submit");
+      e.preventDefault();
+      url = this.action;
+      console.log(this)
+      data = {
+        'authenticity_token': $("input[name='authenticity_token']").val(),
+        'item': {
+          'title': $("#item_title").val(),
+          'description': $("#item_description").val(),
+          'size': $("#item_size").val()
+        }
+      };
+
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: data,
+        success: function(response) {
+          debugger
+        }
+      });
+
+
+    });
+
+    // $("#new_item").submit(function(e) {
+    //   e.preventDefault();
+    //   var action = $(this).attr('action');
+    //   var method = $(this).attr('method');
+    //
+    //   var title = $(this).find("#item_title").val();
+    //   var description = $(this).find("#item_description").val();
+    //   var size = $(this).find("#item_size").val();
+    //
+    //   var data = $(this).serializeArray();
+    //
+    //   $.ajax({
+    //     method: method,
+    //     url: action,
+    //     data: data,
+    //     dataType: 'script',
+    //     success: function(response) {
+    //       $("#item_title").val();
+    //       var $ul = $("div.items_here ul")
+    //       $ul.append(response);
+    //     }
+    //   });
+    // });
+
+
+  });
+
 </script>

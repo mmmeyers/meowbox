@@ -28,11 +28,13 @@ class BoxesController < ApplicationController
 
   def show
     @box = Box.find(params[:id])
-    @item = Item.new
-    respond_to do |format|
-      format.html { render :show }
-      format.json { render json: @box }
-    end
+    @items = @box.items
+    @item = @box.items.build
+    # @item = Item.new
+    # respond_to do |format|
+    #   format.html { render :show }
+    #   format.json { render json: @box }
+    # end
   end
 
   def edit
