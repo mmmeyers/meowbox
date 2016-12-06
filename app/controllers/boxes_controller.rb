@@ -28,13 +28,9 @@ class BoxesController < ApplicationController
 
   def show
     @box = Box.find(params[:id])
-    @items = @box.items
-    @item = @box.items.build
-    # @item = Item.new
-    # respond_to do |format|
-    #   format.html { render :show }
-    #   format.json { render json: @box }
-    # end
+    # @items = @box.items - this breaks the box show page
+    # @item = @box.items.build - this breaks the box show page
+    @item = Item.new
   end
 
   def edit
