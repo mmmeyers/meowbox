@@ -1,7 +1,6 @@
 <h3><%= @box.title %></h3>
 Created on: <%= @box.created_at.strftime("%m/%d/%y") %><br>
 Subscription Level: <%= @box.subscription.level %><br>
-
 Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
 
 
@@ -9,7 +8,7 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
 <p>
   <ol><strong>ITEMS:</strong> (<%= link_to "See item details", box_items_path(@box), :class => "load_items" %>)
     <% @box.items.each do |item| %>
-      <li><%= item.title %> : <%= item.description %> (size: <%= item.size %>) | <%= link_to "edit", edit_box_item_path(@box, item) %> | <%= link_to "delete", [@box, item], :method => :delete %> Note: deleting is final!
+      <li id="place"><%= item.title %> : <%= item.description %> (size: <%= item.size %>) | <%= link_to "edit", edit_box_item_path(@box, item) %> | <%= link_to "delete", [@box, item], :method => :delete %> Note: deleting is final!
       </li>
     <% end %>
   </ol>
@@ -26,7 +25,7 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
     <% if current_user.try(:admin?) %>
       <h2>Add an item to this box</h2>
 
-        <%= form_for([@box, @item]) do |f| %>
+        <%= form_for([@box, @item], :url => box_path(@box)) do |f| %>
         <%= render "shared/error_messages", :target => @item %>
 
         <div class="field">
@@ -53,14 +52,13 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
         <% end %><!-- end of form_for -->
 
       <% else %>
-
-      <p>You are not authorized to view this page.</p>
-      <p><%= link_to "Go back", boxes_path %></p>
-
+        <p>You are not authorized to view this page.</p>
+        <p><%= link_to "Go back", boxes_path %></p>
       <% end %><!-- end of current user try -->
+
       <p>
-      <mark>**This box has not yet been shipped.**</mark> - <%= link_to "Ready to ship?", edit_box_path %>
-    </p>
+        <mark>**This box has not yet been shipped.**</mark> - <%= link_to "Ready to ship?", edit_box_path %>
+      </p>
   <% end %><!-- end of if box.shipped statement -->
 </p>
 
@@ -79,9 +77,20 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
         $("div.items").html(response);
       });
       e.preventDefault();
-    });
+    }); // end of load items click function
 
+  
+    $("form").submit(function(e) {
+      e.preventDefault();
+      var values = $(this).serialize();
+      var url = this.action
 
-  });
+      var itm = $.post(url, values);
+      itm.done(function(data) {
+        console.log(data);
+      })
+    })
+
+  }); // end of document ready
 
 </script>

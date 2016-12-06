@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
     if @item.save
       @box.items << @item # new - not sure why this was deleted?
       respond_to do |format| # new
-        format.html { render 'items/show', :layout => false } # new
+        format.html { render 'items/show', :layout => false } # new 
         format.json { render json: @item, status: 201 } # new
       end # new
     else

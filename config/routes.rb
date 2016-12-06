@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   resources :subscriptions
   resources :users
 
-
   resources :boxes do
     resources :items
   end
+
+  post '/boxes/:id', to: 'boxes#show'
 
 end
