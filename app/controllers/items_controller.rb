@@ -10,7 +10,11 @@ class ItemsController < ApplicationController
     @item = @box.items.build(item_params)
     @item.box_id = @box.id
     if @item.save
-      render 'items/show', :layout => false
+      @box.items << @item # new - not sure why this was deleted?
+      respond_to do |format| # new
+        format.html { render 'items/show', :layout => false } # new
+        format.json { render json: @item, status: 201 } # new
+      end # new
     else
       render 'boxes/show'
     end

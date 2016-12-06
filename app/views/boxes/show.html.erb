@@ -4,6 +4,8 @@ Subscription Level: <%= @box.subscription.level %><br>
 
 Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
 
+
+<!-- This is the list of items: -->
 <p>
   <ol><strong>ITEMS:</strong> (<%= link_to "See item details", box_items_path(@box), :class => "load_items" %>)
     <% @box.items.each do |item| %>
@@ -14,14 +16,13 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
 </p>
 
 
+<!-- This is where the item details are listed -->
 <div class="items">
 </div>
 
 
 <p>
   <% if !@box.shipped %>
-    <% if current_user.try(:admin?) %>
-    <!-- Originally here, I rendered items/form inside a p tag -->
     <% if current_user.try(:admin?) %>
       <h2>Add an item to this box</h2>
 
@@ -49,23 +50,24 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
         </div>
 
           <%= f.submit "Add Item" %>
-        <% end %>
+        <% end %><!-- end of form_for -->
 
       <% else %>
 
       <p>You are not authorized to view this page.</p>
       <p><%= link_to "Go back", boxes_path %></p>
 
-      <% end %>
+      <% end %><!-- end of current user try -->
       <p>
       <mark>**This box has not yet been shipped.**</mark> - <%= link_to "Ready to ship?", edit_box_path %>
     </p>
-    <% end %>
-  <% end %>
+  <% end %><!-- end of if box.shipped statement -->
 </p>
 
-<h5><%= link_to "Back to boxes", boxes_path %></h5>
-<h5><%= link_to 'Next', @box.next if @box.next %></h5>
+<p>
+  <h5><%= link_to "Back to boxes", boxes_path %></h5>
+  <h5><%= link_to 'Next', @box.next if @box.next %></h5>
+</p>
 
 <script type="text/javascript" charset="utf-8">
   $(function() {
@@ -78,56 +80,6 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
       });
       e.preventDefault();
     });
-
-    $("#new_item").on("submit", function(e) {
-      alert("you clicked submit");
-      e.preventDefault();
-      url = this.action;
-      console.log(this)
-      data = {
-        'authenticity_token': $("input[name='authenticity_token']").val(),
-        'item': {
-          'title': $("#item_title").val(),
-          'description': $("#item_description").val(),
-          'size': $("#item_size").val()
-        }
-      };
-
-      $.ajax({
-        type: "POST",
-        url: url,
-        data: data,
-        success: function(response) {
-          debugger
-        }
-      });
-
-
-    });
-
-    // $("#new_item").submit(function(e) {
-    //   e.preventDefault();
-    //   var action = $(this).attr('action');
-    //   var method = $(this).attr('method');
-    //
-    //   var title = $(this).find("#item_title").val();
-    //   var description = $(this).find("#item_description").val();
-    //   var size = $(this).find("#item_size").val();
-    //
-    //   var data = $(this).serializeArray();
-    //
-    //   $.ajax({
-    //     method: method,
-    //     url: action,
-    //     data: data,
-    //     dataType: 'script',
-    //     success: function(response) {
-    //       $("#item_title").val();
-    //       var $ul = $("div.items_here ul")
-    //       $ul.append(response);
-    //     }
-    //   });
-    // });
 
 
   });
