@@ -9,15 +9,10 @@ class ItemsController < ApplicationController
     @box = Box.find(params[:box_id])
     @item = @box.items.build(item_params)
     @item.box_id = @box.id
-    respond_to do |format|
-      if @item.save
-        @box.items << @item
-        format.html { redirect_to(@box, :notice => 'Item was successfully created.') }
-        format.xml  { render :xml => @box, :status => :created, :location => @box }
-      else
-        format.html { render :new }
-        format.xml  { render :xml => @item.errors, :status => :unprocessable_entity }
-      end
+    if @item.save
+      render 'items/show', :layout => false
+    else
+      render 'boxes/show'
     end
   end
 

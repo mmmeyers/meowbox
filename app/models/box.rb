@@ -4,6 +4,7 @@ class Box < ActiveRecord::Base
   has_many :items, through: :box_items
   validates :title, presence: true
   validates :title, uniqueness: true
+  scope :next, lambda {|id| where("id > ?",id).order("id ASC") }
 
   def self.by_subscription(subscription_id)
     where(:subscription => subscription_id)
@@ -15,6 +16,11 @@ class Box < ActiveRecord::Base
       self.items << item
     end
   end
+
+  def next
+     Box.next(self.id).first
+   end
+
 
 # In order for fields_for to work correctly, we need a writer for what we were trying to generate fields
 # for. This items_attributes method will either find an item that was already created (to choose from the
