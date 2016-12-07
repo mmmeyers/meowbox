@@ -10,8 +10,9 @@ class ItemsController < ApplicationController
     @item = @box.items.build(item_params)
     @item.box_id = @box.id
     if @item.save
-      # @box.items << @item
-      redirect_to @box
+      @box.items << @item
+      # redirect_to @box
+      render 'items/show', :layout => false # new
       # respond_to do |format| # new
         # format.html { redirect_to box_path(@box), :layout => false } # new changed from render boxes/show
         # format.json { render json: @box, status: 201 } # new changed @item to @box

@@ -1,12 +1,1 @@
-<h4><%= @item.title %></h4>
-
-<p><%= @item.description %></p>
-<p><%= @item.url %></p>
-<p><%= @item.size %></p>
-<p><%= image_tag @item.photo.url(:thumb) %></p>
-
-<h4><%= link_to "Go back", :back %></h4>
-
-<% if current_user.try(:admin) %>
-  <h4><%= link_to "Edit this item", edit_box_item_path(@box, @item) %></h4>
-<% end %>
+<li><strong><%= @item.title %></strong>: <%= @item.description %> | <%= @item.size %></li>
