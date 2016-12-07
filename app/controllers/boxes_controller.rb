@@ -28,9 +28,9 @@ class BoxesController < ApplicationController
 
   def show
     @box = Box.find(params[:id])
-    # @items = @box.items - this breaks the box show page
+    @items = @box.items #- this breaks the box show page, but working now with @item = Item.new 12/7
     # @item = @box.items.build - this breaks the box show page
-    @item = Item.new
+    @item = Item.new #- original code, keep this and it works
   end
 
   def edit

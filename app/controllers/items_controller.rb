@@ -10,11 +10,12 @@ class ItemsController < ApplicationController
     @item = @box.items.build(item_params)
     @item.box_id = @box.id
     if @item.save
-      @box.items << @item # new - not sure why this was deleted?
-      respond_to do |format| # new
-        format.html { redirect_to box_path(@box), :layout => false } # new changed from render boxes/show
-        format.json { render json: @box, status: 201 } # new changed @item to @box
-      end # new
+      # @box.items << @item
+      redirect_to @box
+      # respond_to do |format| # new
+        # format.html { redirect_to box_path(@box), :layout => false } # new changed from render boxes/show
+        # format.json { render json: @box, status: 201 } # new changed @item to @box
+      # end # new
     else
       render 'boxes/show'
     end
