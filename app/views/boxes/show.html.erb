@@ -5,15 +5,6 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
 
 
 <!-- This is the list of items: -->
-<p>
-  <ol><strong>ITEMS:</strong> (<%= link_to "See item details", box_items_path(@box), :class => "load_items" %>)
-    <% @box.items.each do |item| %>
-      <li id="items"><%= item.title %> : <%= item.description %> (size: <%= item.size %>) | <%= link_to "edit", edit_box_item_path(@box, item) %> | <%= link_to "delete", [@box, item], :method => :delete %> Note: deleting is final!
-      </li>
-    <% end %>
-  </ol>
-</p>
-<!-- put back contents of 'untitled' here -->
 
 
 <!-- This is where the item details are listed -->
@@ -72,6 +63,7 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
 
 <script type="text/javascript" charset="utf-8">
   $(function() {
+    $("#show").hide();
     $("a.load_items").on("click", function(e) {
       $.ajax({
         method: "GET",
@@ -109,6 +101,7 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
         }
       });
 
+    $("#show").show();
 
     });
 
