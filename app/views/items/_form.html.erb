@@ -1,8 +1,8 @@
 <% if current_user.try(:admin?) %>
   <h2>Add an item to this box</h2>
 
-    <%= form_for([@box, @item], html: { multipart: true }) do |f| %>
-    <!-- used to be @box.items.build -->
+    <%= form_for([@box, @box.items.build], html: { multipart: true }) do |f| %>
+    <!-- used to be @items -->
     <%= render "shared/error_messages", :target => @item %>
 
     <div class="field">

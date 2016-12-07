@@ -8,12 +8,16 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
 <p>
   <ol><strong>ITEMS:</strong> (<%= link_to "See item details", box_items_path(@box), :class => "load_items" %>)
     <% @box.items.each do |item| %>
-      <li id="place"><%= item.title %> : <%= item.description %> (size: <%= item.size %>) | <%= link_to "edit", edit_box_item_path(@box, item) %> | <%= link_to "delete", [@box, item], :method => :delete %> Note: deleting is final!
+      <li><%= item.title %> : <%= item.description %> (size: <%= item.size %>) | <%= link_to "edit", edit_box_item_path(@box, item) %> | <%= link_to "delete", [@box, item], :method => :delete %> Note: deleting is final!
       </li>
     <% end %>
   </ol>
 </p>
 
+
+<div class="itemTitle"></div>
+<p class="itemDescription"></p>
+<p class="itemSize"></p>
 
 <!-- This is where the item details are listed -->
 <div class="items">
@@ -25,7 +29,8 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
     <% if current_user.try(:admin?) %>
       <h2>Add an item to this box</h2>
 
-        <%= form_for([@box, @item], :url => box_path(@box)) do |f| %>
+        <%= form_for([@box, @item]) do |f| %>
+  
         <%= render "shared/error_messages", :target => @item %>
 
         <div class="field">
@@ -79,17 +84,6 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
       e.preventDefault();
     }); // end of load items click function
 
-  
-    $("form").submit(function(e) {
-      e.preventDefault();
-      var values = $(this).serialize();
-      var url = this.action
-
-      var itm = $.post(url, values);
-      itm.done(function(data) {
-        console.log(data);
-      })
-    })
 
   }); // end of document ready
 

@@ -12,8 +12,8 @@ class ItemsController < ApplicationController
     if @item.save
       @box.items << @item # new - not sure why this was deleted?
       respond_to do |format| # new
-        format.html { render 'items/show', :layout => false } # new 
-        format.json { render json: @item, status: 201 } # new
+        format.html { redirect_to box_path(@box), :layout => false } # new changed from render boxes/show
+        format.json { render json: @box, status: 201 } # new changed @item to @box
       end # new
     else
       render 'boxes/show'
