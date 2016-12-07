@@ -63,7 +63,6 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
 
 <script type="text/javascript" charset="utf-8">
   $(function() {
-    $("#show").hide();
     $("a.load_items").on("click", function(e) {
       $.ajax({
         method: "GET",
@@ -95,13 +94,14 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
         url: url,
         data: data,
         success: function(response) {
-          console.log(response)
-          var $par = $("div.items p")
+          // console.log(response)
+          $("#item_title").val('');
+          $("#item_description").val('');
+          $("#item_size").val('');
+          var $par = $("div.items ol")
           $par.append(response);
         }
       });
-
-    $("#show").show();
 
     });
 
