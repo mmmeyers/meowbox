@@ -5,7 +5,7 @@
           <li class="list-group-item">
             <h4 class="list-group-item-heading"><%= link_to subscription.level, subscription_path(subscription) %> </h4>
             <div id="subscription-<%= subscription.id %>"></div>
-            <button class="js-more" data-id="<%= subscription.id %>">More Info</button>
+            <button class="js-more" data-id="<%= subscription.id %>">More</button>
             <div id="subscription-<%= subscription.id %>-level"></div>
           </li>
           <% end %>
@@ -45,24 +45,20 @@
 </div><!-- end container -->
 
 <script type="text/javascript" charset="UTF-8">
+
 $(function() {
   $(".js-more").on("click", function() { // 'this' refers to the button.
     var id = $(this).data("id"); // we are grabbing the id of the subscription.
 
-    var currentButton = $(this);
-    var buttonValue = currentButton.html();
-    currentButton.html("Less");
+
 
     $.get("/subscriptions/" + id + ".json", function(data) {
       var descriptionText = "<p>" + data["description"] + "</p>";
       $("#subscription-" + data["id"]).html(descriptionText);
 
-      currentButton.on("click", function() {
-        $("#subscription-" + data["id"]).hide();
-        currentButton.html("More Info");
-      });
     });
 
   });
+
 });
 </script>
