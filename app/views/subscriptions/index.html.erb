@@ -47,11 +47,14 @@
 <script type="text/javascript" charset="UTF-8">
 $(function() {
   $(".js-more").on("click", function() {
+    // 'this' is referring to <t></t>he button
     var id = $(this).data("id");
+    // ^^ we are grabbing the id of the subscription
     $.get("/subscriptions/" + id + ".json", function(data) {
       var descriptionText = "<p>" + data["description"] + "</p>";
       $("#subscription-" + data["id"]).html(descriptionText);
     });
+    $(".js-more").html("Less");
   });
 });
 </script>
