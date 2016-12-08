@@ -6,6 +6,7 @@
     <li>Description: <%= item.description %></li>
     <li>Size: <%= item.size %></li>
     <li>URL: <%= item.url %></li>
+    <p><%= image_tag item.photo.url(:thumb) %></p>
   <% end %>
 </ul>
 
