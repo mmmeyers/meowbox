@@ -50,11 +50,13 @@ $(function() {
     // 'this' is referring to <t></t>he button
     var id = $(this).data("id");
     // ^^ we are grabbing the id of the subscription
+    var currentButton = $(this);
+    var buttonValue = currentButton.html();
+    currentButton.html("Less");
     $.get("/subscriptions/" + id + ".json", function(data) {
       var descriptionText = "<p>" + data["description"] + "</p>";
       $("#subscription-" + data["id"]).html(descriptionText);
     });
-    $(".js-more").html("Less");
   });
 });
 </script>
