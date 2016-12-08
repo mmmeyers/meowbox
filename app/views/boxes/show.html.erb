@@ -87,7 +87,7 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
           'size': $("#item_size").val()
         }
       }
-
+      console.log(data)
       // low level ajax
       $.ajax({
         type: "POST",
