@@ -35,6 +35,11 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
         </div>
 
         <div class="field">
+          <%= f.label :url %>
+          <%= f.text_field :url %><br>
+        </div>
+
+        <div class="field">
           <%= f.label :photo %>
           <%= f.file_field :photo %><br>
         </div>
@@ -84,7 +89,8 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
         'item': {
           'title': $("#item_title").val(),
           'description': $("#item_description").val(),
-          'size': $("#item_size").val()
+          'size': $("#item_size").val(),
+          'url': $("#item_url").val()
         }
       }
       console.log(data)
@@ -94,10 +100,11 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
         url: url,
         data: data,
         success: function(response) {
-          // console.log(response)
+          console.log(response)
           $("#item_title").val('');
           $("#item_description").val('');
           $("#item_size").val('');
+          $("#item_url").val('');
           var $par = $("div.items ol")
           $par.append(response);
         }

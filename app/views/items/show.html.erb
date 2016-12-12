@@ -1,5 +1,4 @@
 <!-- this is what's being displayed when user hits submit -->
-<li><%= @item.title %> : <%= @item.description %> size: (<%= @item.size %>)</li>
-<p><%= image_tag @item.photo.url(:thumb) %></p>
+<li><%= @item.title %> : <%= @item.description %> size: (<%= @item.size %>) | <%= link_to @item.url %></li>
 
 <%= link_to "Back", :back %>

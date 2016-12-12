@@ -13,23 +13,3 @@
 <p>You are not authorized to view this page.</p>
 <p><%= link_to "Go back", boxes_path %></p>
 <% end %>
-
-<script type="text/javascript" charset="UTF-8">
-  $(function() {
-    $(".js-more-user").on("click", function(e) {
-      e.preventDefault();
-      // 'this' is <a class="js-more-user" href="/users/1">Olli</a>
-      var id = this.href
-      // 'id' is http://localhost:3000/users/1
-
-      $.get(this.href + ".json").success(function(response) {
-        // console.log(response)
-        var firstName = "<p>" + response["first_name"] + "</p>"
-        $("#user-" + response["id"]).html(firstName);
-        // $("#subscription-" + response["id"]).toggle();
-      });
-
-    });
-  });
-
-</script>
