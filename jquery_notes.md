@@ -1,6 +1,7 @@
 1. Must render at least one index page (index resource - 'list of things') via jQuery and an Active Model Serialization JSON Backend. For example, in a blog domain with users and posts, you might display the index of the users posts on the users show page, fetching the posts via an AJAX GET request, with the backend rendering the posts in JSON format, and then appending the posts to the page.
 
-  - Display the description for each subscription on the subscriptions index page. (DONE)
+  - Display the description for each subscription on the subscriptions index page. (DONE - for some reason you have to click twice the first time to get it to work)
+  - Add functionality to hide description upon clicking the link again. (DONE)
   - When on the box show page, you can click on item details and ajax will display the item details without page refresh (DONE)
   - User can see all boxes displayed, 5 at a time, on index page. (DONE)
 

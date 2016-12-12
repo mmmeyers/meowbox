@@ -52,24 +52,12 @@
       var id = this.href
 
       $.get(this.href + ".json").success(function(response) {
-
         var descriptionText = "<p>" + response["description"] + "</p>"
         $("#subscription-" + response["id"]).html(descriptionText);
         $("#subscription-" + response["id"]).toggle();
-      })
+      });
 
     });
   });
 
-
-// $(function() {
-//   $(".js-more").on("click", function() { // 'this' refers to the button.
-//     var id = $(this).data("id"); // we are grabbing the id of the subscription.
-//
-//     $.get("/subscriptions/" + id + ".json", function(data) {
-//       var descriptionText = "<p>" + data["description"] + "</p>";
-//       $("#subscription-" + data["id"]).html(descriptionText);
-//     });
-//   });
-// });
 </script>

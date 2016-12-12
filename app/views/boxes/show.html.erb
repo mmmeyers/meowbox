@@ -4,9 +4,6 @@ Subscription Level: <%= @box.subscription.level %><br>
 Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
 
 
-<!-- This is the list of items: -->
-
-
 <!-- This is where the item details are listed -->
 <div class="items">
   <%= render 'items/items' %>
@@ -61,6 +58,7 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
   <h5><%= link_to 'Next', @box.next if @box.next %></h5>
 </p>
 
+<!-- show the item details without refreshing page -->
 <script type="text/javascript" charset="utf-8">
   $(function() {
     $("a.load_items").on("click", function(e) {
@@ -73,6 +71,8 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
       e.preventDefault();
     }); // end of load items click function
 
+
+// add a new item to the div without refreshing page
     $('form').on('submit', function(e) {
       e.preventDefault();
       // the URL to submit the form data

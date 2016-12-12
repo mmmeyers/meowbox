@@ -1,16 +1,24 @@
 <h2>Admin list of users</h2>
 
 <% if current_user.try(:admin?) %>
+<ol>
   <% @users.each do |user| %>
-    <u><%= user.first_name %> <%= user.last_name %></u><br>
-    <strong><%= link_to user.username, user_path(user) %></strong><br>
-    Email: <%= user.email %><br>
-    Role: <%= user.role %><br>
-    Last logged in: <%= user.last_sign_in_at %><br>
+    <li><strong><%= link_to user.username, user_path(user), :class => "load_user" %></strong></li><br>
   <% end %>
-  <p>
+</ol>
+
 <p><%= link_to "Go back", boxes_path %></p>
 <% else %>
 <p>You are not authorized to view this page.</p>
 <p><%= link_to "Go back", boxes_path %></p>
 <% end %>
+
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    $("a.load_user").on("click", function(e) {
+      e.preventDefault();
+      alert("You clicked")
+    })
+  })
+</script>
