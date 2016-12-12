@@ -81,26 +81,27 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
     $('form').on('submit', function(e) {
       e.preventDefault();
       // the URL to submit the form data
-      url = this.action
-
+      // url = this.action
+      data = $(this).serialize();
+      // ($("input[name='_method']").val() || this.method)
       // the form data
-      data = {
-        'authenticity_token': $("input[name='authenticity_token']").val(),
-        'item': {
-          'title': $("#item_title").val(),
-          'description': $("#item_description").val(),
-          'size': $("#item_size").val(),
-          'url': $("#item_url").val()
-        }
-      }
-      console.log(data)
+      // data = {
+      //   'authenticity_token': $("input[name='authenticity_token']").val(),
+      //   'item': {
+      //     'title': $("#item_title").val(),
+      //     'description': $("#item_description").val(),
+      //     'size': $("#item_size").val(),
+      //     'url': $("#item_url").val()
+      //   }
+      // }
+
       // low level ajax
       $.ajax({
-        type: "POST",
-        url: url,
+        type: ($("input[name='_method']").val() || this.method),
+        url: this.action,
         data: data,
         success: function(response) {
-          console.log(response)
+          // console.log(response)
           $("#item_title").val('');
           $("#item_description").val('');
           $("#item_size").val('');

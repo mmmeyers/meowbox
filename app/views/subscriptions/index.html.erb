@@ -47,6 +47,7 @@
 <script type="text/javascript" charset="UTF-8">
   $(function() {
     $(".js-more").on("click", function(e) {
+      console.log($(this).serialize())
       e.preventDefault();
       // this -> <a class="js-more" href="/subscriptions/1">More info</a>
       var id = this.href
