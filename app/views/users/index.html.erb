@@ -3,7 +3,8 @@
 <% if current_user.try(:admin?) %>
 <ol>
   <% @users.each do |user| %>
-    <li><strong><%= link_to user.username, user_path(user), :class => "load_user" %></strong></li><br>
+    <li><strong><%= link_to user.username, user_path(user), :class => "js-more-user" %></strong></li><br>
+    <div id="user-<%= user.id %>"></div>
   <% end %>
 </ol>
 
@@ -13,12 +14,22 @@
 <p><%= link_to "Go back", boxes_path %></p>
 <% end %>
 
-
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript" charset="UTF-8">
   $(function() {
-    $("a.load_user").on("click", function(e) {
+    $(".js-more-user").on("click", function(e) {
       e.preventDefault();
-      alert("You clicked")
-    })
-  })
+      // 'this' is <a class="js-more-user" href="/users/1">Olli</a>
+      var id = this.href
+      // 'id' is http://localhost:3000/users/1
+
+      $.get(this.href + ".json").success(function(response) {
+        // console.log(response)
+        var firstName = "<p>" + response["first_name"] + "</p>"
+        $("#user-" + response["id"]).html(firstName);
+        // $("#subscription-" + response["id"]).toggle();
+      });
+
+    });
+  });
+
 </script>
