@@ -3,12 +3,9 @@ Created on: <%= @box.created_at.strftime("%m/%d/%y") %><br>
 Subscription Level: <%= @box.subscription.level %><br>
 Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
 
-
-<!-- This is where the item details are listed -->
 <div class="items">
-  <%= render 'items/items' %>
+ <%= render 'items/items' %>
 </div>
-
 
 <p>
   <% if !@box.shipped %>
@@ -76,29 +73,14 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
       e.preventDefault();
     }); // end of load items click function
 
-
 // add a new item to the div without refreshing page
     $('form').on('submit', function(e) {
       e.preventDefault();
-      // the URL to submit the form data
-      // url = this.action
       data = $(this).serialize();
-      // ($("input[name='_method']").val() || this.method)
-      // the form data
-      // data = {
-      //   'authenticity_token': $("input[name='authenticity_token']").val(),
-      //   'item': {
-      //     'title': $("#item_title").val(),
-      //     'description': $("#item_description").val(),
-      //     'size': $("#item_size").val(),
-      //     'url': $("#item_url").val()
-      //   }
-      // }
-
       // low level ajax
       $.ajax({
         type: ($("input[name='_method']").val() || this.method),
-        url: this.action,
+        url: this.action, // this is the URL to submit the form data to
         data: data,
         success: function(response) {
           $("#item_title").val('');

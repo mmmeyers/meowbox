@@ -32,6 +32,10 @@ class ItemsController < ApplicationController
   def show
     @box = Box.find(params[:box_id])
     @item = @box.items.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @item }
+    end
   end
 
   def edit

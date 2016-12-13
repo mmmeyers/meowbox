@@ -1,5 +1,4 @@
 'use strict'
-
 function Item(id, title, description, size, url) {
   this.id = id;
   this.title = title;
@@ -9,7 +8,7 @@ function Item(id, title, description, size, url) {
 }
 
 Item.prototype.urlFormatting = function () {
-  var originalUrl = this.url;
+  var originalUrl = response["url"];
   if(originalUrl.includes("http") == true) {
     return originalUrl;
   } else if(originalUrl.includes("www") == true) {
