@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
     @item = @box.items.find(params[:id])
     @item.update_attributes(item_params)
     @item.save
-    redirect_to box_item_path(@box, @item), :notice => "Item updated"
+    redirect_to box_items_path(@box), :notice => "Item updated"
   end
 
   def destroy
