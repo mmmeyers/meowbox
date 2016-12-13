@@ -21,6 +21,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @boxes = @user.boxes
+    respond_to do |format|
+      format.html {render :show}
+      format.json {render json: @user}
+    end
   end
 
   def edit

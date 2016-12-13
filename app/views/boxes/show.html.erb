@@ -101,7 +101,6 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
         url: this.action,
         data: data,
         success: function(response) {
-          // console.log(response)
           $("#item_title").val('');
           $("#item_description").val('');
           $("#item_size").val('');
@@ -109,9 +108,9 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
           var $par = $("div.items ol")
           $par.append(response);
         }
-      });
+      }); // end of ajax call
 
-    });
+    }); // end of form on submit
 
   }); // end of document ready
 

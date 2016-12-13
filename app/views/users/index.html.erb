@@ -3,13 +3,35 @@
 <% if current_user.try(:admin?) %>
 <ol>
   <% @users.each do |user| %>
-    <li><strong><%= link_to user.username, user_path(user), :class => "js-more-user" %></strong></li><br>
-    <div id="user-<%= user.id %>"></div>
+    <li><strong><%= link_to user.username, user_path(user) %></strong></li>
+    <%= link_to "Quick view:", user_path(user), :class => "js-more-user" %>
+    <p><div id="user-<%= user.id %>"></div></p>
   <% end %>
 </ol>
+
 
 <p><%= link_to "Go back", boxes_path %></p>
 <% else %>
 <p>You are not authorized to view this page.</p>
 <p><%= link_to "Go back", boxes_path %></p>
 <% end %>
+
+
+<script type="text/javascript" charset="UTF-8">
+  $(function() {
+    $(".js-more-user").on("click", function(e) {
+      console.log($(this).serialize())
+      e.preventDefault();
+      // this -> <a class="js-more-user" href="/users/1">Quick view</a>
+      var id = this.href
+
+      $.get(this.href + ".json").success(function(response) {
+        var quickText = response["first_name"]
+        $("#user-" + response["id"]).html(quickText);
+        $("#user-" + response["id"]).toggle();
+      });
+
+    });
+  });
+
+</script>
