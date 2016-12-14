@@ -7,6 +7,7 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
  <%= render 'items/items' %>
 </div>
 
+
 <p>
   <% if !@box.shipped %>
     <% if current_user.try(:admin?) %>
@@ -61,26 +62,6 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
 </p>
 
 <script type="text/javascript" charset="utf-8">
-
-function Item(id, title, description, size, url) {
-  this.id = id;
-  this.title = title;
-  this.description = description;
-  this.size = size;
-  this.url = url;
-}
-
-Item.prototype.urlFormatting = function () {
-  var originalUrl = $("#item_url").val();
-  if(originalUrl.includes("http") == true) {
-    return originalUrl;
-  } else if(originalUrl.includes("www") == true) {
-    return "http://" + originalUrl;
-  } else {
-    return "http://" + "www." + originalUrl;
-  }
-}
-
 // show the item details without refreshing page
   $(function() {
     $("a.load_items").on("click", function(e) {
@@ -98,52 +79,20 @@ Item.prototype.urlFormatting = function () {
       e.preventDefault();
       data = $(this).serialize();
       // low level ajax
-      // $.ajax({
-      //   type: ($("input[name='_method']").val() || this.method),
-      //   url: this.action, // this is the URL to submit the form data to /boxes/3/items
-      //   data: data,
-      //   success: function(response) {
-      //     $("#item_title").val('');
-      //     $("#item_description").val('');
-      //     $("#item_size").val('');
-      //     $("#item_url").val('');
-      //
-      //     var newItemInfo = new Item(
-      //       $("#item_title").val(),
-      //       $("#item_description").val(),
-      //       $("#item_size").val(),
-      //       $("#item_url").val()
-      //     )
-      //
-      //     console.log(response)
-      //     var $par = $("div.items ol")
-      //     $par.append(response);
-      //
-      //
-      //     var $itemUrl = $(".itemUrl")
-      //     $itemUrl.html("New URL" + ' ' + newItemInfo.urlFormatting());
-      //
-      //   }
-      // }); // end of ajax call
-      //
-      var url = this.action
-      console.log(url)
-      $.get(url).success(function(response) {
-        var itemDiv = $("div.items ol");
+      $.ajax({
+        type: ($("input[name='_method']").val() || this.method),
+        url: this.action, // this is the URL to submit the form data to /boxes/3/items
+        data: data,
+        success: function(response) {
+          $("#item_title").val('');
+          $("#item_description").val('');
+          $("#item_size").val('');
+          $("#item_url").val('');
 
-        var newItemInfo = new Item(
-          $("#item_title").val(),
-          $("#item_description").val(),
-          $("#item_size").val(),
-          $("#item_url").val()
-        );
-      
-
-        $(itemDiv).html("<li>" + newItemInfo.title + ": " + newItemInfo.description + ' ' + "(size: " + newItemInfo.size + ")"
-          + newItemInfo.urlFormatting() + "</li>"
-
-        );
-      });
+          var $par = $("div.items ol")
+          $par.append(response);
+        }
+      }); // end of ajax call
 
     }); // end of form on submit
 

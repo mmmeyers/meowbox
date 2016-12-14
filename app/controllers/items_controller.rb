@@ -26,7 +26,10 @@ class ItemsController < ApplicationController
   def index
     @box = Box.find(params[:box_id])
     @items = @box.items
-    render 'items/index', :layout => false
+    respond_to do |format|
+      format.html {render 'items/index', :layout => false}
+      format.json {render json: @items}
+    end
   end
 
   def show
