@@ -31,6 +31,10 @@ class BoxesController < ApplicationController
     @items = @box.items #- this breaks the box show page, but working now with @item = Item.new 12/7
     # @item = @box.items.build - this breaks the box show page
     @item = Item.new #- original code, keep this and it works
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @box }
+    end
   end
 
   def edit

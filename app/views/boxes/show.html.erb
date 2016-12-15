@@ -1,6 +1,6 @@
-<h3><%= @box.title %></h3>
-Created on: <%= @box.created_at.strftime("%m/%d/%y") %><br>
-Subscription Level: <%= @box.subscription.level %><br>
+<h3 id="box_title"><%= @box.title %></h3>
+<span id="box_created_on">Created on: <%= @box.created_at.strftime("%m/%d/%y") %></span><br>
+<span id="box_subscription_level">Subscription Level: <%= @box.subscription.level %></span><br>
 Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
 
 <div class="items">
@@ -11,9 +11,9 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
 <p>
   <% if !@box.shipped %>
     <% if current_user.try(:admin?) %>
-      <h2>Add an item to this box</h2>
 
         <%= form_for([@box, @item]) do |f| %>
+        <h2>Add an item to this box</h2>
 
         <%= render "shared/error_messages", :target => @item %>
 
@@ -58,12 +58,13 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
 
 <p>
   <h5><%= link_to "Back to boxes", boxes_path %></h5>
-  <h5><%= link_to 'Next', @box.next if @box.next %></h5>
+  <h5 id="js-boxes-next"><%= link_to 'Next', @box.next if @box.next %></h5>
 </p>
 
 <script type="text/javascript" charset="utf-8">
-// show the item details without refreshing page
+
   $(function() {
+    // show the item details without refreshing page
     $("a.load_items").on("click", function(e) {
       $.ajax({
         method: "GET",
@@ -72,7 +73,9 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
         $("div.items").html(response);
       });
       e.preventDefault();
+      $('form').hide();
     }); // end of load items click function
+
 
 // add a new item to the div without refreshing page
     $('form').on('submit', function(e) {
