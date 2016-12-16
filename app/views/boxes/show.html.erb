@@ -45,9 +45,9 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
           <%= f.submit "Add Item" %>
         <% end %><!-- end of form_for -->
 
-      <% else %>
-        <p>You are not authorized to view this page.</p>
-        <p><%= link_to "Go back", boxes_path %></p>
+      <!-- else -->
+        <!-- <p>You are not authorized to view this page.</p> -->
+        <p><!-- link_to "Go back", boxes_path --></p>
       <% end %><!-- end of current user try -->
 
       <p>
@@ -60,6 +60,13 @@ Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
   <h5><%= link_to "Back to boxes", boxes_path %></h5>
   <h5 id="js-boxes-next"><%= link_to 'Next', @box.next if @box.next %></h5>
 </p>
+
+
+
+
+
+
+
 
 <script type="text/javascript" charset="utf-8">
 

@@ -1,14 +1,13 @@
-<h2>Ship this box!</h2>
-<h4>Confirm the details below then click to ship!</h4>
-<h4>Box name: <%= @box.title %></h4><br>
-
-This box contains the following:<br>
-<% @box.items.each do |item| %>
-  <li><%= item.title %> <%= link_to "delete", [@box, item], :method => :delete %>
-      <%= link_to "edit", edit_box_item_path(@box, item) %></li>
-<% end %>
-
 <% if current_user.try(:admin?) %>
+  <h2>Ship this box!</h2>
+  <h4>Confirm the details below then click to ship!</h4>
+  <h4>Box name: <%= @box.title %></h4><br>
+
+  This box contains the following:<br>
+  <% @box.items.each do |item| %>
+    <li><%= item.title %> <%= link_to "delete", [@box, item], :method => :delete %>
+        <%= link_to "edit", edit_box_item_path(@box, item) %></li>
+  <% end %>
 
     <%= form_for(@box) do |f| %>
       Want to change the title? <%= f.text_field :title %><br>
