@@ -4,7 +4,8 @@ Username: <%= @user.username %><br>
 Role: <%= @user.role %><br>
 Subscription: <%= @user.subscription.level %><br>
 Description: <%= @user.subscription.description %><br>
-Boxes: <br><% @user.boxes.where("updated_at > ?", @user.created_at).find_each do |box| %>
+Boxes: <br>
+        <% @boxes.where("updated_at >= ?", @user.created_at).find_each do |box| %>
           <strong><%= box.title %>, <%= box.updated_at.strftime("%m/%d/%y") %></strong><br>
           This box contained the following:
             <ol>

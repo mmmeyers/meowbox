@@ -1,5 +1,6 @@
 // User constructor
-function User(first_name, last_name, username, email, subscription) {
+function User(id, first_name, last_name, username, email, subscription) {
+  this.id = id;
   this.first_name = first_name;
   this.last_name =  last_name;
   this.username = username;
@@ -23,6 +24,7 @@ $(function() {
       var userDiv = "#user-" + response["id"];
 
       var newUserInfo = new User(
+        response["id"],
         response["first_name"],
         response["last_name"],
         response["username"],
@@ -30,12 +32,19 @@ $(function() {
         response["subscription"]
       );
 
+      // debugger
+
       // $(userDiv).html("<h3>" + newUserInfo.first_name + newUserInfo.last_name + "</h3>")
       $(userDiv).html("<h3>" + newUserInfo.naming() + "</h3>" +
         "<h4>" + "Username: " + newUserInfo.username + "</h4>" +
         "<h4>" + "Email: " + newUserInfo.email + "</h4>" +
         "<h4>" + "Subscription Level: " + newUserInfo.subscription.level + "</h4>" +
-        "<p>" + "Subscription Description: " + newUserInfo.subscription.description + "</p>");
+        "<p>" + "Subscription Description: " + newUserInfo.subscription.description + "</p>" +
+        "<span>" + "See more about this user: " + "</span>" +
+        "<a href=" + "/users/" + newUserInfo.id + ">" + newUserInfo.username + "</a>"
+        );
+
+
 
         $(userDiv).toggle();
 

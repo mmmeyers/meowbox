@@ -3,9 +3,12 @@
 <% if current_user.try(:admin?) %>
 <ol>
   <% @users.each do |user| %>
-    <li><strong><%= link_to user.username, user_path(user) %></strong></li>
+    <li><strong><%= user.username %></strong></li>
     <%= link_to "Quick view", user_path(user), :class => "js-more-user" %>
-    <p><div id="user-<%= user.id %>"></div></p>
+    <div id="information">
+      <span id="user-<%= user.id %>"></span>
+      <span id="boxes"></span>
+    </div>
   <% end %>
 </ol>
 
