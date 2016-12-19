@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root 'subscriptions#index'
 
   resources :subscriptions
+  get 'api/subscriptions', to: 'subscriptions#api_index'
+
   resources :users
 
   resources :boxes do

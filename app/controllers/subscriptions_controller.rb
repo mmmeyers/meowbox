@@ -1,7 +1,12 @@
 class SubscriptionsController < ApplicationController
 
   def index
+    # @subscriptions = Subscription.all
+  end
+
+  def api_index
     @subscriptions = Subscription.all
+    render json: @subscriptions
   end
 
   def show

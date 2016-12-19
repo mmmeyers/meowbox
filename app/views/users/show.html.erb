@@ -1,28 +1,30 @@
-<%= @user.first_name %> <%= @user.last_name %><br>
-Email: <%= @user.email %><br>
-Username: <%= @user.username %><br>
-Role: <%= @user.role %><br>
-Subscription: <%= @user.subscription.level %><br>
-Description: <%= @user.subscription.description %><br>
-Boxes: <br>
-        <% @boxes.where("updated_at >= ?", @user.created_at).find_each do |box| %>
-          <strong><%= box.title %>, <%= box.updated_at.strftime("%m/%d/%y") %></strong><br>
-          This box contained the following:
-            <ol>
-              <% box.items.each do |item| %>
-              <li><%= item.title %></li>
-              <% end %>
-            </ol>
-      <% end %><br>
-Member since: <%= @user.created_at.to_s(:long) %>
+<div class="container-fluid">
+  <%= @user.first_name %> <%= @user.last_name %><br>
+  Email: <%= @user.email %><br>
+  Username: <%= @user.username %><br>
+  Role: <%= @user.role %><br>
+  Subscription: <%= @user.subscription.level %><br>
+  Description: <%= @user.subscription.description %><br>
+  Boxes: <br>
+          <% @boxes.where("updated_at >= ?", @user.created_at).find_each do |box| %>
+            <strong><%= box.title %>, <%= box.updated_at.strftime("%m/%d/%y") %></strong><br>
+            This box contained the following:
+              <ol>
+                <% box.items.each do |item| %>
+                <li><%= item.title %></li>
+                <% end %>
+              </ol>
+        <% end %><br>
+  Member since: <%= @user.created_at.to_s(:long) %>
 
-<p></p>
+  <p></p>
 
-<p>
-<% if current_user.id == @user.id %>
-  <%= link_to "Want to cancel?", edit_user_registration_path %><br>
-  <%= link_to "Go back", root_path %><br>
-<% elsif current_user.try(:admin?) %>
-  <%= link_to "Go back", users_path %>
-<% end %>
-</p>
+  <p>
+  <% if current_user.id == @user.id %>
+    <%= link_to "Want to cancel?", edit_user_registration_path %><br>
+    <%= link_to "Go back", users_path %><br>
+  <% elsif current_user.try(:admin?) %>
+    <%= link_to "Go back", users_path %>
+  <% end %>
+  </p>
+</div>

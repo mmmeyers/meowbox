@@ -15,8 +15,8 @@ User.prototype.naming = function() {
 
 $(function() {
   // open quick view
-  $(".js-more-user").on("click", function(e) {
-    // $(this).serialize();
+  $(document).on("click", ".js-more-user", function(e) {
+    // ^^ I had to do this because once you click the link to the show pg, the ajax wasn't firing.
     e.preventDefault();
 
     $.get(this.href + ".json").success(function(response) {
@@ -41,10 +41,8 @@ $(function() {
         "<h4>" + "Subscription Level: " + newUserInfo.subscription.level + "</h4>" +
         "<p>" + "Subscription Description: " + newUserInfo.subscription.description + "</p>" +
         "<span>" + "See more about this user: " + "</span>" +
-        "<a href=" + "/users/" + newUserInfo.id + ">" + newUserInfo.username + "</a>"
+        "<a href=" + "/users/" + newUserInfo.id + ">" + newUserInfo.username + "</a>" + "<p></p>"
         );
-
-
 
         $(userDiv).toggle();
 

@@ -1,11 +1,12 @@
-<h2><%= @subscription.level %></h2>
-<p><%= @subscription.description %></p>
+<div class="container-fluid">
+  <h2><%= @subscription.level %></h2>
+  <p><%= @subscription.description %></p>
 
-<% if current_user.nil? %>
-  <h5><%= link_to "Sign up", new_user_path %></h5>
-<% elsif current_user.role == "visitor" %>
-  <h5><%= link_to "Subscribe", new_user_path %></h5>
-<% end %>
+  <% if current_user.nil? %>
+    <h5><%= link_to "Sign up", new_user_path %></h5>
+  <% elsif current_user.role == "visitor" %>
+    <h5><%= link_to "Subscribe", new_user_path %></h5>
+  <% end %>
 
-
-<p><%= link_to "Go back", root_path %></p>
+  <p><%= link_to "Go back", root_path %></p>
+</div>

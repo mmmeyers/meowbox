@@ -1,66 +1,67 @@
-<h3 id="box_title"><%= @box.title %></h3>
-<span id="box_created_on">Created on: <%= @box.created_at.strftime("%m/%d/%y") %></span><br>
-<span id="box_subscription_level">Subscription Level: <%= @box.subscription.level %></span><br>
-Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
+<div class="container-fluid">
+  <h3 id="box_title"><%= @box.title %></h3>
+  <span id="box_created_on">Created on: <%= @box.created_at.strftime("%m/%d/%y") %></span><br>
+  <span id="box_subscription_level">Subscription Level: <%= @box.subscription.level %></span><br>
+  Shipped On: <%= @box.updated_at.strftime("%m/%d/%y") %><br>
 
-<div class="items">
- <%= render 'items/items' %>
+  <div class="items">
+   <%= render 'items/items' %>
+  </div>
+
+
+  <p>
+    <% if !@box.shipped %>
+      <% if current_user.try(:admin?) %>
+
+          <%= form_for([@box, @item]) do |f| %>
+          <h2>Add an item to this box</h2>
+
+          <%= render "shared/error_messages", :target => @item %>
+
+          <div class="field">
+            <%= f.label :item_name %>
+            <%= f.text_field :title %><br>
+          </div>
+
+          <div class="field">
+            <%= f.label :item_description %>
+            <%= f.text_area :description %><br>
+          </div>
+
+          <div class="field">
+            <%= f.label :size %>
+            <%= f.text_field :size %><br>
+          </div>
+
+          <div class="field">
+            <%= f.label :url %>
+            <%= f.text_field :url %><br>
+          </div>
+
+          <div class="field">
+            <%= f.label :photo %>
+            <%= f.file_field :photo %><br>
+          </div>
+
+            <%= f.submit "Add Item" %>
+          <% end %><!-- end of form_for -->
+
+        <!-- else -->
+          <!-- <p>You are not authorized to view this page.</p> -->
+          <p><!-- link_to "Go back", boxes_path --></p>
+        <% end %><!-- end of current user try -->
+
+        <p>
+          <mark>**This box has not yet been shipped.**</mark> - <%= link_to "Ready to ship?", edit_box_path %>
+        </p>
+    <% end %><!-- end of if box.shipped statement -->
+  </p>
+
+  <p>
+    <h5><%= link_to "Back to boxes", boxes_path %></h5>
+    <h5 id="js-boxes-next"><%= link_to 'Next', @box.next if @box.next %></h5>
+  </p>
 </div>
-
-
-<p>
-  <% if !@box.shipped %>
-    <% if current_user.try(:admin?) %>
-
-        <%= form_for([@box, @item]) do |f| %>
-        <h2>Add an item to this box</h2>
-
-        <%= render "shared/error_messages", :target => @item %>
-
-        <div class="field">
-          <%= f.label :item_name %>
-          <%= f.text_field :title %><br>
-        </div>
-
-        <div class="field">
-          <%= f.label :item_description %>
-          <%= f.text_area :description %><br>
-        </div>
-
-        <div class="field">
-          <%= f.label :size %>
-          <%= f.text_field :size %><br>
-        </div>
-
-        <div class="field">
-          <%= f.label :url %>
-          <%= f.text_field :url %><br>
-        </div>
-
-        <div class="field">
-          <%= f.label :photo %>
-          <%= f.file_field :photo %><br>
-        </div>
-
-          <%= f.submit "Add Item" %>
-        <% end %><!-- end of form_for -->
-
-      <!-- else -->
-        <!-- <p>You are not authorized to view this page.</p> -->
-        <p><!-- link_to "Go back", boxes_path --></p>
-      <% end %><!-- end of current user try -->
-
-      <p>
-        <mark>**This box has not yet been shipped.**</mark> - <%= link_to "Ready to ship?", edit_box_path %>
-      </p>
-  <% end %><!-- end of if box.shipped statement -->
-</p>
-
-<p>
-  <h5><%= link_to "Back to boxes", boxes_path %></h5>
-  <h5 id="js-boxes-next"><%= link_to 'Next', @box.next if @box.next %></h5>
-</p>
-
 
 
 

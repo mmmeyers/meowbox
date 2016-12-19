@@ -1,47 +1,49 @@
-<% if current_user.try(:admin?) %>
+<div class="container-fluid">
+  <% if current_user.try(:admin?) %>
 
-  <h2>Create a new box</h2>
+    <h2>Create a new box</h2>
 
-    <%= form_for(@box) do |f| %>
-      <% if @box.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@box.errors.count, "error") %> prohibited this box from being saved:</h2>
+      <%= form_for(@box) do |f| %>
+        <% if @box.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@box.errors.count, "error") %> prohibited this box from being saved:</h2>
 
-          <ul>
-            <% @box.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
+            <ul>
+              <% @box.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+      <% if @box.errors[:title].empty? %>
+        <div class="field">
+      <% else %>
+        <div class="field_with_errors">
+      <% end %>
+          <%= f.label :title %>
+          <%= f.text_field :title %><br>
         </div>
+
+        <%= f.label "Subscription level" %>
+        <%= f.collection_select(:subscription_id, Subscription.all, :id, :level) %><br>
+
+
+        <%= f.label :items %><br>
+          <p><%= f.collection_select :item_ids, Item.all, :id, :title, {include_blank: 'Select an item'} %></p>
+
+          <p>You must add a new item: <%= f.fields_for :items, @box.items.build do |items_fields| %></p>
+                Name: <%= items_fields.text_field :title %><br>
+                Description: <%= items_fields.text_area :description %><br>
+                Size: <%= items_fields.text_field :size %><br>
+            <% end %><br>
+        <%= f.submit "Create Box" %>
       <% end %>
 
-    <% if @box.errors[:title].empty? %>
-      <div class="field">
     <% else %>
-      <div class="field_with_errors">
-    <% end %>
-        <%= f.label :title %>
-        <%= f.text_field :title %><br>
-      </div>
 
-      <%= f.label "Subscription level" %>
-      <%= f.collection_select(:subscription_id, Subscription.all, :id, :level) %><br>
+      <p>You are not authorized to view this page.</p>
+      <p><%= link_to "Go back", subscriptions_path %></p>
 
-
-      <%= f.label :items %><br>
-        <p><%= f.collection_select :item_ids, Item.all, :id, :title, {include_blank: 'Select an item'} %></p>
-
-        <p>You must add a new item: <%= f.fields_for :items, @box.items.build do |items_fields| %></p>
-              Name: <%= items_fields.text_field :title %><br>
-              Description: <%= items_fields.text_area :description %><br>
-              Size: <%= items_fields.text_field :size %><br>
-          <% end %><br>
-      <%= f.submit "Create Box" %>
-    <% end %>
-
-  <% else %>
-
-    <p>You are not authorized to view this page.</p>
-    <p><%= link_to "Go back", subscriptions_path %></p>
-
-<% end %>
+  <% end %>
+</div>

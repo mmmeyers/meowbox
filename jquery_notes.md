@@ -20,7 +20,7 @@
 
 5. Must translate the JSON responses into Javascript Model Objects. The Model Objects must have at least one method on the prototype. Formatters work really well for this. Borrowing from the previous example, instead of plainly taking the JSON response of the newly created comment and appending it to the DOM, you would create a Comment prototype object and add a function to that prototype to perhaps concatenate (format) the comments authors first and last name. You would then use the object to append the comment information to the DOM.
 
-  - When we add a new item, it should use a constructor to make the URL uniform.
+  - For user quick view, used a concatenation method for user's first and last name.
 
 
 
