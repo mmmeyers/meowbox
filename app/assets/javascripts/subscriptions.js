@@ -23,8 +23,10 @@ function Subscription(id, level, description) {
 }
 
 Subscription.prototype.formatSubscription = function() {
+  var subscriptionUrl = "<a href='/subscriptions/" + this.id + "'>" + this.level + "</a>";
   var subscriptionHtml = ''
-  subscriptionHtml += '<h3>' + this.level + '</h3>'
+  subscriptionHtml += '<h3>' + subscriptionUrl + '</h3>'
+  console.log(subscriptionHtml)
   subscriptionHtml += '<p>' + this.description + '</p>'
   return subscriptionHtml
 }
