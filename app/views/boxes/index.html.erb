@@ -1,15 +1,20 @@
-<div class="container-fluid">
-  <div id="kittens">
-    <%= render 'boxes' %>
-  </div>
+<div id="boxes_container">
+  <ul class="boxes">
+    <% @boxes.each do |box| %>
+      <% if current_user.try(:admin?) %>
+        <li><%= link_to box.title, box_path(box) %>, <%= box.subscription.level %>, created at: <%= box.created_at.strftime("%m/%d/%y") %>, shipped? <%= box.shipped? %></li>
+      <% else %>
+        <li><%= link_to box.title, box_items_path(box) %> - <%= box.subscription.level %></li>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <%= paginate @boxes %>
+
+  <p><%= link_to "Go back", subscriptions_path %>
+    <% if current_user.try(:admin?) %>
+      | or | <%= link_to "Create new box", new_box_path %>
+    <% end %>
+  </p>
+
 </div>
-
-
-<script type="text/javascript" charset="utf-8">
-    $(function(){
-      $(document).on('click', ".pagination a", function() {
-        $.get(this.href, null, null, "script");
-        return false;
-      });
-    });
-</script>

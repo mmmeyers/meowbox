@@ -1,13 +1,11 @@
 class BoxesController < ApplicationController
 
   def index
-    # @boxes = Box.all
     @subscriptions = Subscription.all
-
     if !params[:subscription].blank?
-      @boxes = Box.by_subscription(params[:subscription]) # .by_subscription comes from the Box model - doesn't have to query the db
+      @boxes = Box.by_subscription(params[:subscription])
     else
-      @boxes = Box.page(params[:page])
+      @boxes = Box.page(params[:page] || 1).per(4)
     end
     render action: :index, layout: request.xhr? == nil
   end
