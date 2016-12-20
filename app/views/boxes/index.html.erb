@@ -18,3 +18,16 @@
   </p>
 
 </div>
+
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $("#boxes_container").off('click', 'nav.pagination a');
+  $("#boxes_container").on('click', 'nav.pagination a', function(e) {
+    e.preventDefault();
+
+    $("#boxes_container").load($(this).attr("href"));
+    return false;
+  });
+});
+</script>
