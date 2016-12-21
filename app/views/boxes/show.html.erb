@@ -88,13 +88,13 @@
 // add a new item to the div without refreshing page
     $('form').on('submit', function(e) {
       e.preventDefault();
-      data = $(this).serialize();
+      data = $(this).serialize(); // serialize packages all the values for us. It merges all form fields for submission
       // low level ajax
       $.ajax({
-        type: ($("input[name='_method']").val() || this.method),
+        type: ($("input[name='_method']").val() || this.method), // allows for post, put, patch methods
         url: this.action, // this is the URL to submit the form data to /boxes/3/items
-        data: data,
-        success: function(response) {
+        data: data, // serialized data instead of using data: { 'authenticity_token': $("input[name='authenticity_token']").val(), 'box': {} etc. }
+        success: function(response) { // reset the form to be blank to make adding another item easier
           $("#item_title").val('');
           $("#item_description").val('');
           $("#item_size").val('');

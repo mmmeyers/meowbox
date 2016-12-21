@@ -1,5 +1,3 @@
-<div class="container-fluid">
+
   <!-- this is what's being displayed when user hits submit -->
-  <h4><%= @item.title %></h4> <%= @item.description %> <br> size: (<%= @item.size %>) <% if @item.url %> | <%= link_to @item.url, "http://#{@item.url}", target: "_blank" %> <% end %> <% if current_user.try(:admin?) %> | <%= link_to "edit", edit_box_item_path(@box, @item) %> | <%= link_to "delete", [@box, @item], :method => :delete %> Note: deleting is final! <% end %>
-  <p><%= image_tag @item.photo.url(:thumb) %></p>
-</div>
+  <li><%= @item.title %>: <%= @item.description %> (size: <%= @item.size %>) <% if @item.url %> | <%= link_to @item.url, "http://#{@item.url}", target: "_blank" %> <% end %> <% if current_user.try(:admin?) %> | <%= link_to "edit", edit_box_item_path(@box, @item) %> | <%= link_to "delete", [@box, @item], :method => :delete %> Note: deleting is final! <% end %>
